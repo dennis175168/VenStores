@@ -1,0 +1,71 @@
+
+<template name="header_large">
+    <div class="col-sm-3 sidenav hidden-xs"><div style="z-index: 999; position: fixed; top: 0px; width: 13%;">
+      <h2 >VENUS</h2>
+
+      <div class="input-group" style="margin-top: 20px; margin-bottom:  20px">
+        <input type="text" class="form-control" placeholder="Search ">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+
+      <ul class="nav nav-pills nav-stacked" >
+        <li><a href="home"><span class="glyphicon glyphicon-th"></span> &nbsp;&nbsp;HOME</a></li>
+        <li><a data-toggle="collapse" href="#collapse1"><span class="glyphicon glyphicon-edit"></span> &nbsp;店家介紹</a></li>
+            <ul id="collapse1" class="panel-collapse collapse nav nav-pills nav-stacked " >
+            <li  style="margin:10px"><a href="basicinfo#pic" style="text-decoration:none">&nbsp;&nbsp;&nbsp;圖片管理</a></li>
+            <li  style="margin:10px"><a href="basicinfo#text" style="text-decoration:none">&nbsp;&nbsp;&nbsp;敘述管理</a></li>
+            </ul>
+        <li><a data-toggle="collapse" href="#collapse2"><span class="glyphicon glyphicon-phone"></span> &nbsp;推播廣告</a></li>
+            <ul id="collapse2" class="panel-collapse collapse nav nav-pills nav-stacked">
+            <li  style="margin:10px"><a href="privacy#idpwd" style="text-decoration:none">&nbsp;&nbsp;&nbsp;最新優惠</a></li>
+            <li  style="margin:10px"><a href="privacy#normal" style="text-decoration:none">&nbsp;&nbsp;&nbsp;手機通知</a></li>
+            </ul>
+        <li><a data-toggle="collapse" href="#collapse3"><span class="glyphicon glyphicon-exclamation-sign"></span> &nbsp;商家隱私設定</a></li>
+            <ul id="collapse3" class="panel-collapse collapse nav nav-pills nav-stacked">
+            <li  style="margin:10px"><a href="privacy#normal" style="text-decoration:none">&nbsp;&nbsp;&nbsp;基本資料更改</a></li>
+            <li  style="margin:10px"><a href="privacy#idpwd" style="text-decoration:none">&nbsp;&nbsp;&nbsp;帳號密碼更改</a></li>
+            </ul>
+        <li><a href="announce"><span class="glyphicon glyphicon-envelope"></span> &nbsp;商圈公告</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> &nbsp;登出</a></li>
+      </ul><br>
+    </div></div>
+</template>
+
+<template name="header_small">
+    <nav class="navbar navbar-inverse visible-xs" data-spy="affix" id="header1">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+            <a class="navbar-brand" href="#">VENUS</a>
+            
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar" >
+            <div class="input-group" style="margin-top: 20px; margin-bottom:  20px">
+            <input type="text" class="form-control" placeholder="Search ">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+            </span>
+            </div>
+        <ul class="nav navbar-nav" >
+            <li class="active" ><a href="#"><span class="glyphicon glyphicon-edit"></span> 店家介紹</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-phone"></span> 推播廣告</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span> 商家隱私設定</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> 商圈公告</a></li>
+            <li><a href="#">登出</a></li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+</template>
+
+

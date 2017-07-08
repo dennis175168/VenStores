@@ -1,0 +1,73 @@
+<template name="announce">
+<div class="annouce">
+    {{>header_small}}
+
+<div class="container-fluid">
+  <div class="row content">
+    {{>header_large}}
+    
+    
+    <br>
+    <div class="col-sm-9">
+      <div class="well" align="center">
+        <h3  style="font-weight:bold;">商圈公告</h3><h4  style="font-weight:bold;">announcment</h4>
+      </div>
+
+      <div class="well" align="center"  >
+        <h4 style="font-weight:bold;">所有公告</h4><h5 style="font-weight:bold;">All Announcments</h5>
+        <div class="thumbnail" style="padding:30px">
+          <table align="center" class="table table-hover">
+                <thead>
+                <tr>
+                    <th style="width:33%; text-align:center" >發布時間</th>
+                    <th style="width:33%; text-align:center">標題主旨</th>
+                    <th style="width:33%; text-align:center">單位</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  data-toggle="modal" data-target="#mailcontent">
+                    <td style="width:33%; text-align:center">2017/7/1</td>
+                    <td style="width:33%; text-align:center">系統更新</td>
+                    <td style="width:33%; text-align:center">威尼斯管理層</td>
+                </tr>
+                <tr>
+                    <td style="width:33%; text-align:center">2017/7/1</td>
+                    <td style="width:33%; text-align:center">系統更新</td>
+                    <td style="width:33%; text-align:center">威尼斯管理層</td>
+                </tr>
+                <tr>
+                    <td style="width:33%; text-align:center">2017/7/1</td>
+                    <td style="width:33%; text-align:center">系統更新</td>
+                    <td style="width:33%; text-align:center">威尼斯管理層</td>
+                </tr>
+                </tbody>
+            </table>
+          </div>
+
+            <!--隱藏區塊-->
+                    <div class="modal fade" id="mailcontent" role="dialog">
+                      <div class="modal-dialog modal-sl">
+
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h5 class="modal-title"  style="color:black; float:left">
+                              <div>發布時間:</div>
+                              <div>單位:</div>
+                              <div>主旨:</div>  
+                            </h5>
+                          </div>
+                          <div class="modal-body">
+                            內容
+                          </div>
+                          
+                        </div>
+                        
+                      </div>
+                    </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</template>

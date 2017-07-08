@@ -1,0 +1,32 @@
+.privacy {
+    .menufixed{ z-index: 999; position: fixed; top: 0px; width: 100%;}
+    //.menufixed2{ z-index: 999; position: fixed; top: 0px; width: 13%;}
+    .row.content {height:2000px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+      width: 15%;
+    }
+    
+    .col-sm-9{
+      width: 85%;
+      // left: 15%;
+      /*top:50px;*/
+    }  
+
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+      .affix{
+          width: 100%;
+      }
+      .col-sm-9{
+        top:100px;
+        left: 0%;   
+        width: 100%;
+      }  
+    }
+    
+}
