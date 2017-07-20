@@ -29,3 +29,17 @@ FlowRouter.route('/privacy', {
     }
 });
 
+
+FlowRouter.route('/login', {
+    name:'log',
+    action() {
+        BlazeLayout.render('log');
+    }
+});
+
+FlowRouter.route('/signin', {
+    name:'signin',
+    action() {
+        BlazeLayout.render('signin');
+    }
+});
