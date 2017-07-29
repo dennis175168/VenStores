@@ -1,0 +1,19 @@
+<template name="pic">
+  <input class="your-upload-class" type="file"><button class="upload" >go</button>
+    <table class="table table-condensed">
+        <tbody>
+          
+        {{#each theFiles}}
+        <tr>
+          <td>{{creatorId}}|</td> 
+          <td>{{uploadedAt}}|</td> 
+          <td>{{original.name}}|</td>
+          <td>{{copies.FileCollection.key}}|</td>
+          <td><a href="{{url}}">link<img width="30%" src="{{url}}">|</a></td>
+          <td>{{#if isUploaded}}uploaded{{/if}}|</td>
+          <td><button >delete</button><input type="button" id="deleteFileButton" value="delete"></td>
+        </tr>
+        {{/each}}
+        </tbody>
+      </table>
+</template>

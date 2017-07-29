@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-
+import { Meteor } from 'meteor/meteor';
 import './main.html';
 
 Template.hello.onCreated(function helloOnCreated() {
@@ -19,4 +19,14 @@ Template.hello.events({
     // increment the counter when button is clicked
     instance.counter.set(instance.counter.get() + 1);
   },
+});
+
+
+Template.header_large.helpers({
+    'click .logout': function(){
+		console.log('logging out'); 
+		Meteor.logout(function(){ 
+		});
+	},
+
 });

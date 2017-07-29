@@ -25,3 +25,7 @@ kadira:blaze-layout
 fourseven:scss
 accounts-password
 accounts-ui
+http
+cfs:filesystem
+cfs:standard-packages
+cfs:gridfs

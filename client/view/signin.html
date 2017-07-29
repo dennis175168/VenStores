@@ -11,31 +11,129 @@
         <h3 style="font-weight:bold;">註冊 </h3><h4 style="font-weight:bold;">Sign In</h4>
       </div>
 
-      <div class="well" align="center" style="height:500px">
-          <form class="thumbnail" style="width:70%">
+      <div class="well" align="center" >
+          <form class="thumbnail" style="width:70%; padding:5%">
             <div class="c">
                 <div>
                     <h4>註冊說明</h4><hr>
                 </div>
+                <div class="lience">
+                    本用戶使用協議（本「協議」）是英屬開曼群島商‭ ‬Dcard Holdings Ltd‭. ‬以及其關係企業（「‭ ‬Dcard‭ ‬」）據以營運‭ ‬Dcard‭ ‬網站及社群交友服務（「‭ ‬Dcard‭ ‬服務」或「服務」）的基本約款，規範‭ ‬Dcard‭ ‬與用戶的關係。
+                    您完成成為‭ ‬Dcard‭ ‬會員之註冊程序，作為‭ ‬Dcard‭ ‬服務的用戶，代表您瞭解且同意遵守本協議下示條款：
+                </div>
+                
+                註冊即代表您同意遵守 Venus 使用協議<br><br>
                 <input type="button" value="開始註冊" class="btn btn-primary b" >
             </div>
+
             <div  class="c1">
-                1
+                <h4>Step 1: 填寫基本資料</h4><hr>
+                <div style="width:50%">
+                    <div class="form-group">
+                    <label for="sel1">商家類型:</label>
+                        <select class="form-control" id="sh_type">
+                            <option value="1">食</option>
+                            <option value="2">衣</option>
+                            <option value="3">住</option>
+                            <option value="4">行</option>
+                            <option value="5">育樂</option>
+                            <option value="6">醫療</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="usr" style="float:left">商家名稱:</label>
+                        <input type="text" class="form-control" id="sh_name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="usr" style="float:left">商家電話:</label>
+                        <input type="text" class="form-control" id="sh_phone">
+                    </div>  
+                    <div class="form-group">
+                        <label for="usr" style="float:left">商家地址:</label>
+                        <input type="text" class="form-control" id="sh_address">
+                    </div>  
+                    <div class="form-group">
+                        <label for="usr" style="float:left">商家信箱:</label>
+                        <input type="text" class="form-control" id="sh_mail">
+                    </div> 
+                    <div class="form-group">
+                        <label for="usr" style="float:left">負責人姓名:</label>
+                        <input type="text" class="form-control" id="sh_admin">
+                    </div>  
+                    <div class="form-group">
+                        <label for="usr" style="float:left">負責人電話:</label>
+                        <input type="text" class="form-control" id="sh_admin_phone">
+                    </div>                       
+                </div>
+                <input type="button" value="上一步" class="btn btn-primary b11">
                 <input type="button" value="下一步" class="btn btn-primary b1">
             </div>
 
             <div  class="c2" id="con2">
-                2
+                <h4>Step 2: 確認資料</h4><hr>
+                <div>
+                    <!-- 確認註冊 -->
+                    <table width="50%" align="center">
+                        <tr>
+                            <td><label>商家類型:</label></td>
+                            <td><div id="lab_sh_type"></div></td>
+                        </tr>
+                        <tr>
+                            <td><label>商家名稱:</label></td>
+                            <td><div id="lab_sh_name"></div></td>
+                        </tr>
+                        <tr>
+                            <td><label>商家電話:</label></td>
+                            <td><div id="lab_sh_phone"></div></td>
+                        </tr>
+                        <tr>
+                            <td><label>商家地址:</label></td>
+                            <td><div id="lab_sh_address"></div></td>
+                        </tr>
+                         <tr>
+                            <td><label>商家信箱:</label></td>
+                            <td><div id="lab_sh_mail"></div></td>
+                        </tr>
+                        <tr>
+                            <td><label>負責人姓名:</label></td>
+                            <td><div id="lab_sh_admin"></div></td>
+                        </tr>
+                        <tr>
+                            <td><label>負責人電話:</label></td>
+                            <td><div id="lab_sh_admin_phone"></div></td>
+                        </tr>
+                    </table>
+    
+                </div>
+                <input type="button" value="上一步" class="btn btn-primary b22">
                 <input type="button" value="下一步" class="btn btn-primary b2">
             </div>
 
             <div  class="c3" id="con2">
-                3
-                <input type="button" value="下一步" class="btn btn-primary b3">
+                <h4>Step 3: 上傳網頁圖片</h4><hr>
+                <div style="width:50%">
+                    <div class="form-group">
+                        <label for="pwd">商家LOGO圖片:</label>
+                        <input class="logo-upload-class" type="file" id="logo_pic">
+
+                        <label for="pwd">商家基本圖片:</label>
+                        <input class="basic-upload-class" type="file">
+                    </div>
+                </div>
+                <!-- <input type="button" value="上一步" class="btn btn-primary b33"> -->
+                <!-- <input type="button" value="上傳圖片並申請註冊" class="btn btn-primary b3" id="upload"> -->
+                <button type="button"  class="btn btn-primary b3" id="upload">上傳圖片並申請註冊</button>
             </div>
         
             <div  class="c4" id="con2">
-                4
+                <h4>Step 4: 等待審核</h4><hr>
+                <h4 style="font-weight:bold;">
+                    等待商圈進行審核...<br><br>
+                    <div style="color:#8F0000">請注意您所填寫的信箱,審核完成後將會利用信箱進行通知</div>
+                </h4>
+
+                <!-- <input type="button" value="上一步" class="btn btn-primary b44"> -->
                 <a href="login"><input type="button" value="完成進行登入" class="btn btn-primary b4"></a>
             </div>
             

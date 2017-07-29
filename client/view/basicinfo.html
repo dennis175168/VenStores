@@ -9,6 +9,7 @@
     
     <br>
     <div class="col-sm-9">
+    {{#if currentUser}}  
       <div class="well" align="center"  >
         <h3 style="font-weight:bold;">店家資訊 </h3><h4 style="font-weight:bold;">Shop Information</h4>
       </div>
@@ -16,13 +17,13 @@
       <div class="well" align="center" id="pic"  >
           <table style="width:100%; text-align:center;">
             <tr><td colspan="3" style="width:100%; text-align:center; padding:10px ">
-                <h4 style="font-weight:bold;">圖片管理</h4><h5 style="font-weight:bold;">Pictures</h5>
+                <h4 style="font-weight:bold;">編輯圖片</h4><h5 style="font-weight:bold;">Pictures</h5>
             </td></tr>
             <tr>
               <td style="width:33%; text-align:center; padding:10px ">
                 <div class="thumbnail">
-                  <a href="Nike.jpg">
-                  <img src="Nike.jpg" alt="Lights" style="width:100%">
+                  <a href="uploads/{{ info.sh_pic1 }}">
+                  <img src="uploads/{{ info.sh_pic1 }}" alt="Lights" style="width:100%">
                   </a>
                   <div class="caption">
                     <button class="btn btn-danger" style="width:100%; margin-top:10px" data-toggle="modal" data-target="#change1">更換</button>
@@ -32,8 +33,8 @@
 
               <td style="width:33%; text-align:center; padding:10px ">
                 <div class="thumbnail">
-                  <a href="Nike.jpg">
-                  <img src="Nike.jpg" alt="Lights" style="width:100%">
+                  <a href="uploads/{{ info.sh_pic2 }}">
+                  <img src="uploads/{{ info.sh_pic2 }}" alt="Lights" style="width:100%">
                   </a>
                   <div class="caption">
                     <button class="btn btn-danger" style="width:100%; margin-top:10px" data-toggle="modal" data-target="#change2">更換</button>
@@ -43,8 +44,8 @@
 
               <td style="width:33%; text-align:center; padding:10px ">
                 <div class="thumbnail">
-                  <a href="Nike.jpg">
-                  <img src="Nike.jpg" alt="Lights" style="width:100%">
+                  <a href="uploads/{{ info.sh_pic3 }}">
+                  <img src="uploads/{{ info.sh_pic3 }}" alt="Lights" style="width:100%">
                   </a>
                   <div class="caption">
                     <button class="btn btn-danger" style="width:100%; margin-top:10px" data-toggle="modal" data-target="#change3">更換</button>
@@ -53,27 +54,39 @@
               </td>
 
             </tr>
-          </table>
 
+            <tr><td colspan="3" style="width:100%; text-align:center; padding:10px ">
+                <a href="mypic"><button class="btn btn-primary" style="width:100%; margin-top:10px">上傳新圖</button></a>
+            </td></tr>
+          </table>
+          <!-- 隱藏div -->
             <div class="modal fade" id="change1" role="dialog">
               <div class="modal-dialog">
 
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"  style="color:black">編輯圖檔</h4>
+                    <h4 class="modal-title"  style="color:black">編輯圖檔1</h4>
                   </div>
                   <div class="modal-body">
-                    <div class="thumbnail">
-                      <a href="Nike.jpg">
-                      <img src="Nike.jpg" alt="Lights" style="width:100%">
-                      </a>
-                    </div>
+                    <table style="width:100%; text-align:center;">
+                      <tr>
+                      {{#each theFiles}}
+                        <td style="width:33%; text-align:center; padding:10px ">
+                          <div class="thumbnail" >
+                            <a href=""><img src="{{url}}" alt="Lights" style="width:100%"></a>
+                            <div class="caption">
+                                <input type="button" id="choose_pic1" class="btn btn-success" value="check" style="width:100%; margin-top:10px">
+                            </div>
+                          </div>
+                        </td>
+                      {{/each}}
+                      </tr>
+                    </table>
                   </div>
                   <div class="modal-footer">
-                    <input type="file" style="color:black">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">確認更改</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                    <!-- <button type="button" class="btn btn-success update_pic1" data-dismiss="modal">確認更改</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button> -->
                   </div>
                 </div>
                 
@@ -89,16 +102,22 @@
                     <h4 class="modal-title"  style="color:black">編輯圖檔2</h4>
                   </div>
                   <div class="modal-body">
-                    <div class="thumbnail">
-                      <a href="Nike.jpg">
-                      <img src="Nike.jpg" alt="Lights" style="width:100%">
-                      </a>
-                    </div>
+                    <table style="width:100%; text-align:center;">
+                      <tr>
+                      {{#each theFiles}}
+                        <td style="width:33%; text-align:center; padding:10px ">
+                          <div class="thumbnail" >
+                            <a href=""><img src="{{url}}" alt="Lights" style="width:100%"></a>
+                            <div class="caption">
+                                <input type="button" id="choose_pic2" class="btn btn-success" value="check" style="width:100%; margin-top:10px">
+                            </div>
+                          </div>
+                        </td>
+                      {{/each}}
+                      </tr>
+                    </table>
                   </div>
                   <div class="modal-footer">
-                    <input type="file" style="color:black">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">確認更改</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
                   </div>
                 </div>
                 
@@ -114,16 +133,22 @@
                     <h4 class="modal-title"  style="color:black">編輯圖檔3</h4>
                   </div>
                   <div class="modal-body">
-                    <div class="thumbnail">
-                      <a href="Nike.jpg">
-                      <img src="Nike.jpg" alt="Lights" style="width:100%">
-                      </a>
-                    </div>
+                    <table style="width:100%; text-align:center;">
+                      <tr>
+                      {{#each theFiles}}
+                        <td style="width:33%; text-align:center; padding:10px ">
+                          <div class="thumbnail" >
+                            <a href=""><img src="{{url}}" alt="Lights" style="width:100%"></a>
+                            <div class="caption">
+                                <input type="button" id="choose_pic3" class="btn btn-success" value="check" style="width:100%; margin-top:10px">
+                            </div>
+                          </div>
+                        </td>
+                      {{/each}}
+                      </tr>
+                    </table>
                   </div>
                   <div class="modal-footer">
-                    <input type="file" style="color:black">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">確認更改</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
                   </div>
                 </div>
                 
@@ -139,7 +164,7 @@
                 <tr>
                     <td style="width:20%; text-align:center; padding:10px "><h4 style="font-weight:bold;">地址</h4></td>
                     <td style="width:60%; text-align:center; padding:10px ">
-                        <div class="thumbnail" style="color:black; padding:5%"><strong>32085 桃園市中壢區九和一街48號3樓之2</strong></div>
+                        <div class="thumbnail" style="color:black; padding:5%"><strong>{{ info.sh_address }}</strong></div>
                     </td>
                     <td style="width:20%; text-align:center; padding:10px "><button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change11">更換</button></td>
                 </tr>
@@ -147,7 +172,7 @@
                 <tr>
                     <td style="width:20%; text-align:center; padding:10px "><h4 style="font-weight:bold;">電話</h4></td>
                     <td style="width:46%; text-align:center; padding:10px ">
-                        <div class="thumbnail" style="color:black; padding:5%"><strong>03-280-5018</strong></div>
+                        <div class="thumbnail" style="color:black; padding:5%"><strong>{{ info.sh_phone }}</strong></div>
                     </td>
                     <td style="width:33%; text-align:center; padding:10px "><button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change12">更換</button></td>
                 </tr>
@@ -156,7 +181,7 @@
                     <td style="width:20%; text-align:center; padding:10px "><h4 style="font-weight:bold;">商店介紹</h4></td>
                     <td style="width:46%; text-align:center; padding:10px ">
                         <div class="thumbnail" style="color:black; padding:5%">
-                            <strong>「威尼斯」是一個許多人作夢都想去的地方，迷樣的都市充滿了浪漫的情懷，令人垂涎三尺的盛饌、咖啡，聞名的歌劇及令人目眩的嘉年華會。無論是文學家、藝術家、音樂家、哲學家，甚至是電影工作者從1896年的魯米爾（Lumiere）兄弟到一百年後的外國導演都選擇在威尼斯做為電影拍片的背景。事實上電影就如同整個威尼斯，像個嘉年華會般的充滿戲如人生的自我放縱，在影片中每個演員戴上了扮演角色的面具精湛地演出，在戲院中每個觀眾卸下平日的面具被賦予作夢的情懷；觀看與被觀看，這就是進入戲院裏觀看電影令人著迷的地方，也因此我們決定以「威尼斯影城」做為我們影城的名稱。</strong>
+                            <strong>{{ info.sh_info }}</strong>
                         </div>
                     </td>
                     <td style="width:33%; text-align:center; padding:10px "><button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change13">更換</button></td>
@@ -173,10 +198,10 @@
                     <h4 class="modal-title"  style="color:black">地址修改</h4>
                   </div>
                   <div class="modal-body">
-                    <textarea placeholder="輸入更新文字" style="width:90%;height:200px"></textarea>
+                    <textarea id="address" placeholder="輸入更新文字" style="width:90%;height:200px" required></textarea>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">確認更改</button>
+                    <button type="button" class="btn btn-success update_address" data-dismiss="modal">確認更改</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
                   </div>
                 </div>
@@ -191,10 +216,10 @@
                     <h4 class="modal-title"  style="color:black">電話修改</h4>
                   </div>
                   <div class="modal-body">
-                    <textarea placeholder="輸入更新文字" style="width:90%;height:200px"></textarea>
+                    <textarea id="phone" placeholder="輸入更新文字" style="width:90%;height:200px"></textarea>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">確認更改</button>
+                    <button type="button" class="btn btn-success update_phone" data-dismiss="modal">確認更改</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
                   </div>
                 </div>
@@ -209,10 +234,10 @@
                     <h4 class="modal-title"  style="color:black">商店介紹修改</h4>
                   </div>
                   <div class="modal-body">
-                    <textarea placeholder="輸入更新文字" style="width:90%;height:200px"></textarea>
+                    <textarea id="info" placeholder="輸入更新文字" style="width:90%;height:200px"></textarea>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">確認更改</button>
+                    <button type="button" class="btn btn-success update_info" data-dismiss="modal">確認更改</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
                   </div>
                 </div>
@@ -223,12 +248,18 @@
         </div>
 
 
+<!-- {{#each shops }}
+{{sh_id}}
+{{/each}} -->
+<!-- {{ shop_add }}
+{{ shop_img }} -->
 
+
+    {{else}}
+      {{> permitsion}}
+    {{/if}}
     </div>
 </div>
 </div>
-    
-    
-
 </div>
 </template>

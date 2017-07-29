@@ -1,8 +1,12 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Meteor } from 'meteor/meteor';
+import { Temp_Shop } from '../../lib/collections';
+import { FileCollection } from '../../lib/collections';
+import { LogoCollection } from '../../lib/collections';
 
 Template.signin.onCreated(function() {
-   //console.log("b1");
+   
     
 });
 
@@ -12,38 +16,159 @@ Template.signin.helpers({
 
 Template.signin.events({
 
-    'click .b'(event) {
+    'click .b'(event,t) {
         console.log("b");
         //$(".c2").hide();
         //alert("123");
-        $(".c1").addClass("sw");
-        $(".c").addClass("hd");
+        // event.preventDefault();
+        // const aaa = t.find('#aa').value;
+        // console.log(aaa);
+        $(".c1").css("display", "block");
+        $(".c").css("display", "none");
     },
 
-    'click .b1'(event) {
+    'click .b1'(event,t) {
         console.log("b1");
         //$(".c2").hide();
         //alert("123");
-        $(".c2").addClass("sw");
-        $(".c1").addClass("hd");
+        $(".c2").css("display", "block");
+        $(".c1").css("display", "none");
+        event.preventDefault();
+        const sh_type = t.find('#sh_type').value;
+        const sh_name = t.find('#sh_name').value;
+        const sh_phone = t.find('#sh_phone').value;
+        const sh_address = t.find('#sh_address').value;
+        const sh_mail = t.find('#sh_mail').value;
+        const sh_admin = t.find('#sh_admin').value;
+        const sh_admin_phone = t.find('#sh_admin_phone').value;
+        document.getElementById("lab_sh_type").innerHTML=sh_type;
+        document.getElementById("lab_sh_name").innerHTML=sh_name;
+        document.getElementById("lab_sh_phone").innerHTML=sh_phone;
+        document.getElementById("lab_sh_address").innerHTML=sh_address;
+        document.getElementById("lab_sh_mail").innerHTML=sh_mail;
+        document.getElementById("lab_sh_admin").innerHTML=sh_admin;
+        document.getElementById("lab_sh_admin_phone").innerHTML=sh_admin_phone;
+        //console.log(document.getElementById("sh_type").value);
     },
 
-    'click .b2'(event) {
+    'click .b11'(event) {
+        console.log("b11");
+        $('.c').css("display", "block");
+        $('.c1').css("display", "none");
+        
+    },
+
+    'click .b2'(event,t) {
         console.log("b2");
-        //$(".c2").hide();
-        //alert("123");
-        $(".c3").addClass("sw");
-        $(".c2").addClass("hd");
+        $(".c3").css("display", "block");
+        $(".c2").css("display", "none");
     },
 
-    'click .b3'(event) {
+    'click .b22'(event) {
+        console.log("b22");
+        $('.c1').css("display", "block");
+        $('.c2').css("display", "none");
+    },
+
+    'click .b3'(event ,t) {
         console.log("b3");
-        //$(".c2").hide();
+        $(".c4").css("display", "block");
+        $(".c3").css("display", "none");
+
+        event.preventDefault();
+        const sh_name = t.find('#sh_name').value;
+        const sh_phone = t.find('#sh_phone').value;
+        const sh_address = t.find('#sh_address').value;
+        const sh_mail = t.find('#sh_mail').value;
+        const sh_admin = t.find('#sh_admin').value;
+        const sh_admin_phone = t.find('#sh_admin_phone').value;
+        //Meteor.call('TempUserinsert', sh_name, sh_phone, sh_address, sh_mail, sh_admin, sh_admin_phone);//
+    },
+
+    'click .b33'(event) {
+        console.log("b33");
+        $(".c2").css("display", "block");
+        $(".c3").css("display", "none");
+    },
+
+    'click .b44'(event) {
+        console.log("b44");
+        $(".c3").css("display", "block");
+        $(".c4").css("display", "none");
+    },
+
+    'click .b4'(event) {
+        console.log("b4");
         //alert("123");
-        $(".c4").addClass("sw");
-        $(".c3").addClass("hd");
+    },
+
+    'change .logo-upload-class': function (event, template) {
+        $('#upload').click(function(){
+
+            console.log("uploading...")
+            FS.Utility.eachFile(event, function (file) {
+            console.log("each file...");
+            var yourFile = new FS.File(file);
+            yourFile.creatorId = 456; // todo
+            console.log(yourFile);
+            FileCollection.insert(yourFile, function (err, fileObj) {
+                console.log("callback for the insert, err: ", err);
+                if (!err) {
+                console.log("inserted without error");
+                }
+                else {
+                console.log("there was an error", err);
+                }
+            });
+            });
+        });
+        
+      },
+
+    'change .basic-upload-class': function (event, template) {
+        $('#upload').click(function(){
+
+            console.log("uploading...")
+            FS.Utility.eachFile(event, function (file) {
+            console.log("each file...");
+            var yourFile = new FS.File(file);
+            yourFile.creatorId = 456; // todo
+            console.log(yourFile);
+            LogoCollection.insert(yourFile, function (err, fileObj) {
+                console.log("callback for the insert, err: ", err);
+                if (!err) {
+                console.log("inserted without error");
+                }
+                else {
+                console.log("there was an error", err);
+                }
+            });
+            });
+        });
+        
+      },
+    'click #upload'(){
+        console.log("789")
+        FlowRouter.go('finish');
     },
 
     
 
 });
+
+
+
+// Template.pic.helpers({
+//   theFiles: function () {
+//     return FileCollection.find();
+//   }
+// });
+// Template.pic.events({
+//       'click #deleteFileButton ': function (event) {
+//         // console.log("deleteFile button ", this);
+//         console.log(this);
+//         FileCollection.remove({_id:this._id});
+//         console.log("123");
+
+//       },
+// });

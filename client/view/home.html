@@ -9,6 +9,7 @@
 
     <br>
     <div class="col-sm-9">
+    {{#if currentUser}}  
       <div class="well" align="center"  >
         <h3 style="font-weight:bold;">首頁 </h3><h4 style="font-weight:bold;">HOME</h4>
       </div>
@@ -36,12 +37,11 @@
           <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
         </div>-->
       </div>
-
+    {{else}}
+      {{> permitsion}}
+    {{/if}}  
     </div>
 </div>
 </div>
-
-
-
 </div>
 </template>

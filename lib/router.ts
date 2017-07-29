@@ -1,5 +1,5 @@
- //import { FlowRouter } from 'meteor';
-// import { BlazeLayout } from 'meteor/BlazeLayout';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
 FlowRouter.route('/home', {
     name:'home',
@@ -29,6 +29,13 @@ FlowRouter.route('/privacy', {
     }
 });
 
+FlowRouter.route('/advertise', {
+    name:'advertise',
+    action() {
+        BlazeLayout.render('advertise');
+    }
+});
+
 
 FlowRouter.route('/login', {
     name:'log',
@@ -41,5 +48,35 @@ FlowRouter.route('/signin', {
     name:'signin',
     action() {
         BlazeLayout.render('signin');
+    }
+});
+
+FlowRouter.route('/verify/:sh_id', {
+    name:'verify',
+    action: function(params) {
+        console.log(params.sh_id);
+        var a=params.sh_id;
+        BlazeLayout.render('verify',{a});
+    }
+});
+
+FlowRouter.route('/pic', {
+    name:'verify',
+    action: function() {
+        BlazeLayout.render('pic');
+    }
+});
+
+FlowRouter.route('/finish', {
+    name:'finish',
+    action: function() {
+        BlazeLayout.render('finish');
+    }
+});
+
+FlowRouter.route('/mypic', {
+    name:'mypic',
+    action: function() {
+        BlazeLayout.render('mypic');
     }
 });

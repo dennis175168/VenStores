@@ -1,0 +1,77 @@
+<template name="advertise">
+<div class="advertise">
+    {{>header_small}}
+
+<div class="container-fluid">
+  <div class="row content">
+    {{>header_large}}
+    
+    
+    <br>
+    <div class="col-sm-9" >
+    {{#if currentUser}}  
+      <div class="well" align="center">
+        <h3  style="font-weight:bold;">優惠廣告</h3><h4  style="font-weight:bold;">advertisement</h4>
+      </div>
+
+      <div class="well" align="center"  id="new">
+        <h4 style="font-weight:bold;">最新廣告</h4><h5 style="font-weight:bold;">New advertisements</h5><br><br>
+        
+          <table align="center" style="width:100%; text-align:center" >
+                
+                <tr>
+                    <td style="width:50%; text-align:center">
+                        <div align="center"><div class="thumbnail" style="padding:30px; width:60%;">
+                            <a href="ad.jpg">
+                            <img src="ad.jpg" alt="Lights" style="width:100%">
+                            </a>
+                        </div></div>
+                    </td>
+                    <td style="width:50%; text-align:center">
+                        <div align="center"><div class="thumbnail" style="padding:30px; width:60%;  height:500px">   
+                            <div>勁抵優惠來了！買1件標有「Seasonal clearance」既產品，即享9折；買2件即享8折；買3件或以上更可享7折。部份貨品本身還有特價，折扣完更可低至5折。購物滿HK$599免運費。
+
+之前無特價的波鞋款今次都有特價啦，例如Sock Dart, Flyknit, Roshe Two, Huarache, Air Max Thea。官網款式好多的！記得免費登記註冊會員再購買！</div>
+                            
+                        </div></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-danger" style="width:60%; margin-top:10px" data-toggle="modal" data-target="#mailcontent">更換</button></td>
+                    <td><button class="btn btn-danger" style="width:60%; margin-top:10px" data-toggle="modal" data-target="#mailcontent">更換</button></td>
+                </tr>
+            </table>
+          
+
+            <!--隱藏區塊-->
+                    <div class="modal fade" id="mailcontent" role="dialog">
+                      <div class="modal-dialog modal-sl">
+
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h5 class="modal-title"  style="color:black; float:left">
+                              <div>發布時間:</div>
+                              <div>單位:</div>
+                              <div>主旨:</div>  
+                            </h5>
+                          </div>
+                          <div class="modal-body">
+                            內容
+                          </div>
+                          
+                        </div>
+                        
+                      </div>
+                    </div>
+      </div>
+    {{else}}
+      {{> permitsion}}
+    {{/if}}
+    </div>
+  </div>
+</div>
+</div>
+</template>
+
+
