@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 
 export const Shop = new Mongo.Collection('shop');
+export const Offer = new Mongo.Collection('offer');
 export const Temp_Shop = new Mongo.Collection('temp_shop');
 export const Users = Meteor.users;
 

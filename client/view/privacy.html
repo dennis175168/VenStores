@@ -34,7 +34,7 @@
               <h5><span class="glyphicon glyphicon-ok"></span> {{info.sh_name}}</h5>
             </td>
             <td  style="width:50%; text-align:center; padding:10px ">
-              <button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change3">更換</button>
+              <button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change_name">更換</button>
             </td>
           </tr>
 
@@ -55,7 +55,7 @@
               <h5><span class="glyphicon glyphicon-ok"></span> {{info.sh_mail}}</h5>
             </td>
             <td  style="width:50%; text-align:center; padding:10px ">
-              <button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change3">更換</button>
+              <button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change_mail">更換</button>
             </td>
           </tr>
 
@@ -118,7 +118,7 @@
               <h5><span class="glyphicon glyphicon-ok"></span> {{info.sh_admin}}</h5>
             </td>
             <td  style="width:50%; text-align:center; padding:10px ">
-              <button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change3">更換</button>
+              <button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change_person">更換</button>
             </td>
           </tr>
           <tr><td colspan="2"><hr></td></tr>
@@ -138,7 +138,7 @@
               <h5><span class="glyphicon glyphicon-ok"></span> {{info.sh_admin_phone}}</h5>
             </td>
             <td  style="width:50%; text-align:center; padding:10px ">
-              <button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change3">更換</button>
+              <button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change_person_phone">更換</button>
             </td>
           </tr>
 
@@ -156,13 +156,107 @@
               <strong>密碼</strong><br>
             </td>
             <td  style="width:50%; text-align:center; padding:10px ">
-              <button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change3">更換</button>
+              <button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change_pwd">更換</button>
             </td>
           </tr>
 
         </table>
         </div>
       </div>
+
+
+
+      <!-- 隱藏區塊 -->
+      <div class="modal fade" id="change_name" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"  style="color:black">店家名稱修改</h4>
+              </div>
+              <div class="modal-body">
+                  <input type="text" class="form-control" id="name">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success update_name" data-dismiss="modal">確認更改</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="change_mail" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"  style="color:black">信箱修改</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="mail">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success update_mail" data-dismiss="modal">確認更改</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="change_person" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"  style="color:black">負責人修改</h4>
+                  </div>
+                  <div class="modal-body">
+                      <input type="text" class="form-control" id="person">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success update_person" data-dismiss="modal">確認更改</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="change_person_phone" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title"  style="color:black">負責人電話修改</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" id="person_phone">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success update_person_phone" data-dismiss="modal">確認更改</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal fade" id="change_pwd" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"  style="color:black">密碼修改</h4>
+                      </div>
+                      <div class="modal-body">
+                          <input type="text" class="form-control" id="usr">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-success update_address" data-dismiss="modal">確認更改</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
 
 
     {{else}}

@@ -3,6 +3,15 @@ import { HTTP } from 'meteor/http';
 import { Shop } from '../lib/collections';
 
 Meteor.startup(() => {
+  if(Meteor.isServer){
+    Meteor.users.allow({
+      update(userId, doc, fields, modifier) {
+        // Can only change your own documents.
+        return doc.owner === userId;
+      },
+    });
+  }
+  
      //Meteor._reload.onMigrate(() => [false]); 
   // code to run on server at startup
   // const sql ="select * from shop";

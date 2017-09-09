@@ -1,8 +1,13 @@
 import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http';
 import { Shop } from '../lib/collections';
+import { Offer } from '../lib/collections';
 import { Temp_Shop } from '../lib/collections';
 import { FileCollection } from '../lib/collections';
+import { Users} from '../../lib/collections';
+import { Accounts } from 'meteor/accounts-base';
+
+
 
 Meteor.methods({
     'load'(){
@@ -47,6 +52,34 @@ Meteor.methods({
             }
             });
 
+    },
+    'load_offer' (){
+        const sql ="select * from offer";
+        HTTP.post("http://127.0.0.1/ajax/venus.php", { params: {sql} }, function(err, data){
+        Offer.remove({});
+        console.log(data);
+        const info = JSON.parse(data.content);
+        console.log( info[0].sh_name);
+        console.log(info.length);
+        for(var i=0; i<info.length; i++){
+                const sh_id = info[i].sh_id;
+                const offer_id = info[i].sh_mail;
+                const offer_pic = info[i].offer_pic;
+                const offer_text= info[i].offer_text;
+                const offer_startdate = info[i].offer_startdate;
+                const offer_enddate = info[i].offer_enddate;
+                const offer_onsmartphone = info[i].offer_onsmartphone;
+                Offer.insert({
+                sh_id : sh_id,
+                offer_id: offer_id,
+                offer_pic :offer_pic,
+                offer_text :offer_text,
+                offer_startdate :offer_startdate,
+                offer_enddate :offer_enddate,
+                offer_onsmartphone :offer_onsmartphone,
+                });
+        }
+        });   
     },
 
     'TempUserinsert'(name, phone, address, mail, admin, admin_phone){//
@@ -108,9 +141,39 @@ Meteor.methods({
         HTTP.post("http://127.0.0.1/ajax/venus.php", { params: {sql} }, function(err){}); 
     },
 
+    
     '123'(){
         const content = FileCollection.findOne({creatorId:3+"pic1"}).copies.FileCollection.key;
         Meteor.call('update', 'sh_pic1', content, 3);
         console.log("success");
     },
+
+    'updateuser'(user_id,content){
+        Meteor.users.update({_id: user_id } , { $set: {'emails.0.address' : content} });
+    }
+    // 'removeusers'(user_id){
+    //     Users.remove({_id:user_id});
+    // },
+    // 'createusers'(mail , pwd ,name){
+    //     Accounts.createUser({email: mail, password : pwd, username: name}, function(err){
+    //         if (err) {
+    //           // Inform the user that account creation failed
+    //           console.log("ff");
+    //         } else {
+    //           // Success. Account has been created and the user
+    //           // has logged in successfully. 
+    //           console.log("gg");
+    //         }
+  
+    //       });
+    // },
 })
+
+// if (Meteor.isServer){
+//     Meteor.methods({
+//         'update_mail'(user_id, content){
+//             const mail = Meteor.user().emails[0].address;
+//             Meteor.users.update({ _id: Meteor.userId(), 'emails.address': mail }, { $set: { 'emails.address': content }});
+//         },
+//     })
+// }
