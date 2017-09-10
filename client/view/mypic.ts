@@ -19,8 +19,8 @@ Template.mypic.events({
         console.log(shop_id);
         const count = FileCollection.find({creatorId:shop_id}).count();
 
-        if(count>=3){
-            alert("商家圖片上船上限為3張");
+        if(count>=5){
+            alert("商家圖片上船上限為5張");
         }else{
             $('.upload').click(function(){
             console.log("uploading...")

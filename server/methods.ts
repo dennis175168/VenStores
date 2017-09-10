@@ -63,7 +63,7 @@ Meteor.methods({
         console.log(info.length);
         for(var i=0; i<info.length; i++){
                 const sh_id = info[i].sh_id;
-                const offer_id = info[i].sh_mail;
+                const offer_id = info[i].offer_id;
                 const offer_pic = info[i].offer_pic;
                 const offer_text= info[i].offer_text;
                 const offer_startdate = info[i].offer_startdate;
@@ -136,9 +136,20 @@ Meteor.methods({
         HTTP.post("http://127.0.0.1/ajax/venus.php", { params: {sql} }, function(err){}); 
     },
 
+    'Offerinsert'(sh_id, offer_text, offer_startdate, offer_enddate ){
+        const offer_onsmartphone = 0;
+        const sql = "INSERT INTO offer (sh_id, offer_text, offer_startdate, offer_enddate, offer_onsmartphone) VALUES ('"+sh_id+"','"+offer_text+"','"+offer_startdate+"','"+offer_enddate+"','"+offer_onsmartphone+"')";
+        HTTP.post("http://127.0.0.1/ajax/venus.php", { params: {sql} }, function(err){}); 
+    },
+
     'update'(column, content , id){
         const sql ="UPDATE shop SET "+column+"='"+content+"' WHERE sh_id="+id;
         HTTP.post("http://127.0.0.1/ajax/venus.php", { params: {sql} }, function(err){}); 
+    },
+
+    'UpdateAll'(table ,column, content , id ,key_column){
+        const sql ="UPDATE "+table+" SET "+column+"='"+content+"' WHERE "+key_column+"="+id;
+        HTTP.post("http://127.0.0.1/ajax/venus.php", { params: {sql} }, function(err){});
     },
 
     
