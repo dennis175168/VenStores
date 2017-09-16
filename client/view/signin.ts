@@ -31,8 +31,6 @@ Template.signin.events({
         console.log("b1");
         //$(".c2").hide();
         //alert("123");
-        $(".c2").css("display", "block");
-        $(".c1").css("display", "none");
         event.preventDefault();
         const sh_type = t.find('#sh_type').value;
         const sh_name = t.find('#sh_name').value;
@@ -41,6 +39,12 @@ Template.signin.events({
         const sh_mail = t.find('#sh_mail').value;
         const sh_admin = t.find('#sh_admin').value;
         const sh_admin_phone = t.find('#sh_admin_phone').value;
+        if(sh_name == "" || sh_phone == "" || sh_address == "" || sh_mail == "" || sh_admin == "" || sh_admin_phone == ""){
+            alert("請輸入完整資訊");
+        }else{
+            $(".c2").css("display", "block");
+            $(".c1").css("display", "none");
+        }
         document.getElementById("lab_sh_type").innerHTML=sh_type;
         document.getElementById("lab_sh_name").innerHTML=sh_name;
         document.getElementById("lab_sh_phone").innerHTML=sh_phone;
@@ -60,8 +64,17 @@ Template.signin.events({
 
     'click .b2'(event,t) {
         console.log("b2");
-        $(".c3").css("display", "block");
+        $(".c3").css("display", "none");
         $(".c2").css("display", "none");
+        const sh_type = t.find('#sh_type').value;
+        const sh_name = t.find('#sh_name').value;
+        const sh_phone = t.find('#sh_phone').value;
+        const sh_address = t.find('#sh_address').value;
+        const sh_mail = t.find('#sh_mail').value;
+        const sh_admin = t.find('#sh_admin').value;
+        const sh_admin_phone = t.find('#sh_admin_phone').value;
+        Meteor.call('TempUserinsert', sh_name, sh_phone, sh_address, sh_mail, sh_admin, sh_admin_phone, sh_type);
+        FlowRouter.go('finish');
     },
 
     'click .b22'(event) {
@@ -70,87 +83,96 @@ Template.signin.events({
         $('.c2').css("display", "none");
     },
 
-    'click .b3'(event ,t) {
-        console.log("b3");
-        $(".c4").css("display", "block");
-        $(".c3").css("display", "none");
+    // 'click .b3'(event ,t) {
+    //     console.log("b3");
+    //     $(".c4").css("display", "block");
+    //     $(".c3").css("display", "none");
 
-        event.preventDefault();
-        const sh_name = t.find('#sh_name').value;
-        const sh_phone = t.find('#sh_phone').value;
-        const sh_address = t.find('#sh_address').value;
-        const sh_mail = t.find('#sh_mail').value;
-        const sh_admin = t.find('#sh_admin').value;
-        const sh_admin_phone = t.find('#sh_admin_phone').value;
-        //Meteor.call('TempUserinsert', sh_name, sh_phone, sh_address, sh_mail, sh_admin, sh_admin_phone);//
-    },
+    //     event.preventDefault();
+    //     const sh_name = t.find('#sh_name').value;
+    //     const sh_phone = t.find('#sh_phone').value;
+    //     const sh_address = t.find('#sh_address').value;
+    //     const sh_mail = t.find('#sh_mail').value;
+    //     const sh_admin = t.find('#sh_admin').value;
+    //     const sh_admin_phone = t.find('#sh_admin_phone').value;
+    //     ////
+    // },
 
-    'click .b33'(event) {
-        console.log("b33");
-        $(".c2").css("display", "block");
-        $(".c3").css("display", "none");
-    },
+    // 'click .b33'(event) {
+    //     console.log("b33");
+    //     $(".c2").css("display", "block");
+    //     $(".c3").css("display", "none");
+    // },
 
-    'click .b44'(event) {
-        console.log("b44");
-        $(".c3").css("display", "block");
-        $(".c4").css("display", "none");
-    },
+    // 'click .b44'(event) {
+    //     console.log("b44");
+    //     $(".c3").css("display", "block");
+    //     $(".c4").css("display", "none");
+    // },
 
-    'click .b4'(event) {
-        console.log("b4");
-        //alert("123");
-    },
+    // 'click .b4'(event) {
+    //     console.log("b4");
+    //     //alert("123");
+    // },
 
-    'change .logo-upload-class': function (event, template) {
-        $('#upload').click(function(){
+    // 'change .logo-upload-class': function (event, template,t) {
+    //     const sh_mail = t.find('#sh_mail').value;
+    //     $('#upload').click(function(event,t1){
 
-            console.log("uploading...")
-            FS.Utility.eachFile(event, function (file) {
-            console.log("each file...");
-            var yourFile = new FS.File(file);
-            yourFile.creatorId = 456; // todo
-            console.log(yourFile);
-            FileCollection.insert(yourFile, function (err, fileObj) {
-                console.log("callback for the insert, err: ", err);
-                if (!err) {
-                console.log("inserted without error");
-                }
-                else {
-                console.log("there was an error", err);
-                }
-            });
-            });
-        });
+    //         console.log("uploading...")
+    //         FS.Utility.eachFile(event, function (file) {
+    //         console.log("each file...");
+    //         var yourFile = new FS.File(file);
+    //         yourFile.creatorId = sh_mail; // todo
+    //         console.log(yourFile);
+    //         FileCollection.insert(yourFile, function (err, fileObj) {
+    //             console.log("callback for the insert, err: ", err);
+    //             if (!err) {
+    //             console.log("inserted without error");
+    //             }
+    //             else {
+    //             console.log("there was an error", err);
+    //             }
+    //         });
+    //         });
+    //     });
         
-      },
+    //   },
 
-    'change .basic-upload-class': function (event, template) {
-        $('#upload').click(function(){
+    // 'change .basic-upload-class': function (event, template) {
+    //     $('#upload').click(function(){
 
-            console.log("uploading...")
-            FS.Utility.eachFile(event, function (file) {
-            console.log("each file...");
-            var yourFile = new FS.File(file);
-            yourFile.creatorId = 456; // todo
-            console.log(yourFile);
-            LogoCollection.insert(yourFile, function (err, fileObj) {
-                console.log("callback for the insert, err: ", err);
-                if (!err) {
-                console.log("inserted without error");
-                }
-                else {
-                console.log("there was an error", err);
-                }
-            });
-            });
-        });
+    //         console.log("uploading...")
+    //         FS.Utility.eachFile(event, function (file) {
+    //         console.log("each file...");
+    //         var yourFile = new FS.File(file);
+    //         yourFile.creatorId = 456; // todo
+    //         console.log(yourFile);
+    //         LogoCollection.insert(yourFile, function (err, fileObj) {
+    //             console.log("callback for the insert, err: ", err);
+    //             if (!err) {
+    //             console.log("inserted without error");
+    //             }
+    //             else {
+    //             console.log("there was an error", err);
+    //             }
+    //         });
+    //         });
+    //     });
         
-      },
-    'click #upload'(){
-        console.log("789")
-        FlowRouter.go('finish');
-    },
+    //   },
+    // 'click #upload'(event ,t){
+    //     console.log("789")
+    //     const sh_name = t.find('#sh_name').value;
+    //     const sh_phone = t.find('#sh_phone').value;
+    //     const sh_address = t.find('#sh_address').value;
+    //     const sh_mail = t.find('#sh_mail').value;
+    //     const sh_admin = t.find('#sh_admin').value;
+    //     const sh_admin_phone = t.find('#sh_admin_phone').value;
+    //     //Meteor.call('TempUserinsert', sh_name, sh_phone, sh_address, sh_mail, sh_admin, sh_admin_phone);
+        
+    //     FlowRouter.go('finish');
+    // },
 
     
 

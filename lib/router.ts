@@ -80,3 +80,10 @@ FlowRouter.route('/mypic', {
         BlazeLayout.render('mypic');
     }
 });
+
+FlowRouter.route('/scanner', {
+    name:'scanner',
+    action: function() {
+        BlazeLayout.render('scanner');
+    }
+});

@@ -36,7 +36,7 @@ Template.verify.events({
         const tsh_info = Temp_Shop.findOne({tsh_id: tsh_id}).tsh_info;
         const tsh_admin = Temp_Shop.findOne({tsh_id: tsh_id}).tsh_admin;
         const tsh_admin_phone = Temp_Shop.findOne({tsh_id: tsh_id}).tsh_admin_phone;
-
+        console.log(tsh_name);
         Accounts.createUser({email: tsh_mail, password : pwd, username: tsh_name}, function(err){
           if (err) {
             // Inform the user that account creation failed
@@ -46,7 +46,7 @@ Template.verify.events({
             // has logged in successfully. 
             console.log("gg");
             Meteor.call('Userinsert', tsh_mail, tsh_name, tsh_phone, tsh_address, tsh_type, tsh_pic1, tsh_pic2, tsh_pic3, tsh_info, tsh_admin, tsh_admin_phone);
-            
+            FlowRouter.go('home');
 
           }
 

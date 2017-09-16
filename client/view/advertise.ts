@@ -30,12 +30,27 @@ Template.advertise.events({
     const add_offer_text = t.find('#add_offer_text').value;
     const mail = Meteor.user().emails[0].address;
     const myshop = Shop.findOne({sh_mail: mail});
+    const shop_id = myshop.sh_id;
+    const myoffers = Offer.find({sh_id:shop_id});
+    const count = myoffers.count();
     if(offer_startdate == "" || offer_enddate == ""||add_offer_text == ""){
       console.log("打字阿");
-      alert("請輸入內容");
+      alert("請輸入完整內容");
+     }else if(count >= 3){
+      alert("最多上傳三筆廣告");
+      $(".new").css("display", "none");
      }else{
         console.log(offer_startdate+offer_enddate+add_offer_text+myshop.sh_id);
+        Offer.insert({
+          sh_id:myshop.sh_id,
+          offer_startdate:offer_startdate,
+          offer_enddate:offer_enddate,
+          offer_text: add_offer_text,
+          offer_onsmartphone:'0',
+        });
         Meteor.call('Offerinsert', myshop.sh_id, add_offer_text, offer_startdate, offer_enddate);
+        $(".new").css("display", "none");
+        alert("新增成功");
      }
     
   },
@@ -141,6 +156,15 @@ Template.advertise.events({
 
     
     
+  },
+  'click .delete_offer'(event,t){
+    event.preventDefault();
+    const offer_id = this.offer_id;
+    const _id = this._id;
+    const offer_startdate_content = t.find('#update_offer_startdate_content'+offer_id).value;
+    Offer.remove({_id: _id});
+    Meteor.call('RemoveAll', 'offer','offer_id', offer_id);
+    //console.log(this);
   },
     
   

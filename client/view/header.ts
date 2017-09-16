@@ -25,6 +25,14 @@ Template.header_large.events({
 	},
 
 });
+
+Template.header_small.helpers({
+	info(){
+	const mail = Meteor.user().emails[0].address;
+	const myshop = Shop.findOne({sh_mail: mail});
+	return myshop.sh_name;
+},
+});
 Template.header_small.events({
     'click #logout': function(){
 		console.log('logging out'); 

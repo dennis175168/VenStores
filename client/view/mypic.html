@@ -8,37 +8,32 @@
 
 
     <br>
-    <div class="col-sm-9">
+    <div class="col-sm-9" >
     {{#if currentUser}}  
       <div class="well" align="center"  >
         <h3 style="font-weight:bold;">圖片管理 </h3><h4 style="font-weight:bold;">Pictures</h4>
       </div>
-
-      <div class="well" align="center"  >
-        <h4 style="font-weight:bold;">商家介紹圖</h4><h5 style="font-weight:bold;"></h5>
-        
-        <table style="width:100%; text-align:center;">
-            
-            <tr>
-            {{#each theFiles}}
-              <td style="width:33%; text-align:center; padding:10px ">
-                <div class="thumbnail" >
-                  <a href=""><img src="{{url}}" alt="Lights" style="width:100%"></a>
-                  <div class="caption">
-                      <input type="button" id="deleteFileButton" class="btn btn-danger" value="delete" style="width:100%; margin-top:10px">
-                  </div>
-                </div>
-              </td>
-            {{/each}}
-            </tr>
-        </table>
-        
-        <div>
+      
+      <div class="well" align="center"  style="height:1500px">
+        <h4 style="font-weight:bold;">商家圖片集</h4><h5 style="font-weight:bold;"></h5>
+        <br><div >
             <input class="upload-class" type="file"><br>
             <button class="btn btn-default upload" style="width:50%">上傳</button>
+        </div><br>
+        {{#each theFiles}}
+        <div class="col-sm-4">
+            <div class="thumbnail" >
+              <img src="{{url}}" alt="照片已不存在或損毀,請重新選擇" style="height:300px">
+              <div class="caption">
+                  <input type="button" id="deleteFileButton" class="btn btn-danger" value="delete" style="width:100%; margin-top:10px">
+              </div>
+            </div>
         </div>
+        {{/each}}
+        
+        
       </div>
-
+      
 
     <!-- {{#each theFiles}}
         <tr>

@@ -1,0 +1,65 @@
+<template name="scanner" >
+<div class="scanner">
+<div class="advertise">
+    {{>header_small}}
+            
+<div class="container-fluid">
+    <div class="row content">
+    {{>header_large}}
+
+    
+	
+	<br>
+    <div class="col-sm-9" >
+	<div class="well" align="center" style="padding:5px">
+            <h3  style="font-weight:bold;">積點兌換</h3><h4  style="font-weight:bold;">advertisement</h4>
+    </div>
+	<div class="well" align="center" >
+        <div id="main">
+            <div class="btn-group" style="padding:1%" >
+                <button type="button" class="btn btn-primary" onclick="setwebcam()">webcam</button>
+                <button type="button" class="btn btn-primary" onclick="setimg()">setimg</button>
+                <button type="button" class="btn btn-primary">手動輸入</button>
+            </div>
+            <div id="mainbody" align="center">
+                
+                <!-- <td><img class="selector" id="webcamimg" src="https://webqr.com/vid.png" onclick="setwebcam()" align="left" /></td>
+                                <td><img class="selector" id="qrimg" src="https://webqr.com/cam.png" onclick="setimg()" align="right" /></td> -->
+                <div id="outdiv" width="100%"></div>
+
+                <div style="">
+                    <div id="result">result</div>
+                    <div class="form-group">
+                        <label for="pwd">消費金額:</label>
+                        <input type="text" class="form-control" id="point">
+                    </div>
+                    <button class="btn btn-success point_insert" >兌換點數</button>
+                </div>
+                
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- webqr_2016 -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8418802408648518" data-ad-slot="2527990541" data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            </div>&nbsp;
+
+        </div>
+    </div>
+
+            <canvas id="qr-canvas" width="800" height="600"></canvas>
+            <script type="text/javascript">
+                load();
+            </script>
+
+
+
+
+
+
+    </div>
+    </div>
+</div>
+</div> 
+</div>                  
+</template>

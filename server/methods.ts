@@ -82,8 +82,8 @@ Meteor.methods({
         });   
     },
 
-    'TempUserinsert'(name, phone, address, mail, admin, admin_phone){//
-        const sql = "INSERT INTO temp_shop (tsh_name, tsh_mail, tsh_phone, tsh_address, tsh_admin, tsh_admin_phone) VALUES ('"+name+"','"+mail+"','"+phone+"','"+address+"','"+admin+"','"+admin_phone+"')";
+    'TempUserinsert'(name, phone, address, mail, admin, admin_phone, type){//
+        const sql = "INSERT INTO temp_shop (tsh_name, tsh_mail, tsh_phone, tsh_address, tsh_admin, tsh_admin_phone, verify, tsh_type) VALUES ('"+name+"','"+mail+"','"+phone+"','"+address+"','"+admin+"','"+admin_phone+"','F','"+type+"')";
         HTTP.post("http://127.0.0.1/ajax/venus.php", { params: {sql} }, function(err){});     
     },
 
@@ -152,16 +152,14 @@ Meteor.methods({
         HTTP.post("http://127.0.0.1/ajax/venus.php", { params: {sql} }, function(err){});
     },
 
-    
-    '123'(){
-        const content = FileCollection.findOne({creatorId:3+"pic1"}).copies.FileCollection.key;
-        Meteor.call('update', 'sh_pic1', content, 3);
-        console.log("success");
-    },
-
     'updateuser'(user_id,content){
         Meteor.users.update({_id: user_id } , { $set: {'emails.0.address' : content} });
-    }
+    },
+
+    'RemoveAll'(table,key_column,id){
+        const sql ="DELETE FROM "+table+" WHERE "+key_column+"="+id;
+        HTTP.post("http://127.0.0.1/ajax/venus.php", { params: {sql} }, function(err){});
+    },
     // 'removeusers'(user_id){
     //     Users.remove({_id:user_id});
     // },
@@ -178,6 +176,14 @@ Meteor.methods({
   
     //       });
     // },
+
+    
+    
+    '123'(){
+        const content = FileCollection.findOne({creatorId:3+"pic1"}).copies.FileCollection.key;
+        Meteor.call('update', 'sh_pic1', content, 3);
+        console.log("success");
+    },
 })
 
 // if (Meteor.isServer){

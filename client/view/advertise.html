@@ -62,21 +62,55 @@
                 <td><button class="btn btn-danger clo" style="width:60%; margin-top:10px" >close</button></td>
             </tr>
           </table><br><br>
+
         </div>
         {{#each offer_info}}
-        
-        <table align="center" style="width:100%; text-align:center" >
+        <div class="col-sm-4">
+              <h4>優惠時段</h4>
+              <div align="center"><div class="thumbnail" style="padding:30px;  "> 
+                  <div style=" height:300px">
+                    開始時間:  {{offer_startdate}}  <br> 至 <br>結束時間:  {{offer_enddate}}
+                  </div>
+                  <div class="caption">
+                      <button class="btn btn-danger" style="width:100%; margin-top:10px" data-toggle="modal" data-target="#offer_date{{offer_id}}">更換</button>
+                  </div>
+                </div></div>
+        </div>
+        <div class="col-sm-4">
+            <h4>優惠圖片</h4>
+            <div align="center"><div class="thumbnail" style="padding:30px;">
+                <a href="uploads/{{offer_pic}}">
+                  <img src="uploads/{{ offer_pic }}" alt="照片已不存在或損毀,請重新選擇" style=" height:300px">
+                </a>
+                <div class="caption">
+                  <button class="btn btn-danger" style="width:100%; margin-top:10px" data-toggle="modal" data-target="#offer_pic{{offer_id}}">更換</button>
+                </div>
+            </div></div>
+        </div>
+        <div class="col-sm-4">
+            <h4>優惠敘述</h4>
+            <div align="center"><div class="thumbnail" style="padding:30px;  ">   
+                <div style=" height:300px">{{offer_text}}</div>
+                <div class="caption">
+                    <button class="btn btn-danger" style="width:100%; margin-top:10px" data-toggle="modal" data-target="#offer_text{{offer_id}}">更換</button>
+                </div>
+              </div></div>
+        </div>
+        <div >
+            <button class="btn btn-danger delete_offer" style="width:60%; margin-top:10px">刪除</button>
+            {{#if $eq offer_onsmartphone is1}}
+            <button class="btn btn-warning update_offer_onsmartphone_0" style="width:60%; margin-top:10px">取消手機推播</button>
+            {{else}}
+            <button class="btn btn-success update_offer_onsmartphone_1" style="width:60%; margin-top:10px">設為手機推播</button>
+            {{/if}}
+        </div><br><br>
+        <!-- <table align="center" style="width:100%; text-align:center" >
           
           <br>
           
 
           <tr>
-            <td colspan="3"><hr style="display: block;margin-top: 0.5em;
-          margin-bottom: 5%;
-          margin-left: 10%;
-          margin-right: 10%;
-          border-style: inset;
-          border-width: 1px;"></td>
+            <td colspan="3"><hr style="display: block;margin-top: 0.5em;margin-bottom: 5%;margin-left: 10%;margin-right: 10%;border-style: inset;border-width: 1px;"></td>
           </tr>
           <tr>
               <th style="text-align:center">優惠時段</th>
@@ -125,7 +159,7 @@
             </tr>
           
           
-        </table>
+        </table> -->
         
         <!--隱藏區塊-->
         <div class="modal fade" id="offer_date{{offer_id}}" role="dialog">

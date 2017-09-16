@@ -25,6 +25,7 @@ Template.log.events({
           // could be incorrect. Inform the user that their
           // login attempt has failed. 
           console.log("ff");
+          alert("請輸入正確信箱與密碼");
         }
           
         else{
