@@ -1,5 +1,6 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
+import { Temp_Shop } from '../lib/collections';
 
 FlowRouter.route('/home', {
     name:'home',
@@ -55,8 +56,10 @@ FlowRouter.route('/verify/:sh_id', {
     name:'verify',
     action: function(params) {
         console.log(params.sh_id);
-        var a=params.sh_id;
-        BlazeLayout.render('verify',{a});
+        //var my_tsh = Temp_Shop.find();
+        var par_id=params.sh_id;
+        //console.log(my_tsh);
+        BlazeLayout.render('verify',{par_id});
     }
 });
 
@@ -85,5 +88,19 @@ FlowRouter.route('/scanner', {
     name:'scanner',
     action: function() {
         BlazeLayout.render('scanner');
+    }
+});
+
+FlowRouter.route('/prize', {
+    name:'prize',
+    action: function() {
+        BlazeLayout.render('prize');
+    }
+});
+
+FlowRouter.route('/alluser', {
+    name:'alluser',
+    action: function() {
+        BlazeLayout.render('alluser');
     }
 });

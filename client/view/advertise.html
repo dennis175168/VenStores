@@ -21,17 +21,12 @@
             <hr>
         </div><br>
 
-        <div class="new" style="background-color:#4F4F4F ;padding:5%">
-          <table align="center" style="width:100%; text-align:center" >
-            <tr>
-                <th style="text-align:center;color:white">優惠時段</th>
-                <!-- <th style="text-align:center">優惠圖片</th> -->
-                <th style="text-align:center;color:white">優惠敘述</th>
-            </tr>
+        <div class="new" style="background-color:#4F4F4F ;padding:5%;margin:10px">
+            <div><button class="btn btn-danger clo" style="width:100px;  float:right" >取消</button></div>
             <br>
-            <tr>
-              <td style="width:33%; text-align:center">
-                <div align="center"><div class="thumbnail" style="padding:30px; width:60%; height:350px "> 
+            <br><br>
+                <div class="col-sm-6">
+                <div align="center"><div class="thumbnail" style="padding:30px; width:100%; height:350px "> 
                     <div class="form-group">
                       <label >開始時間:</label>
                       <input type="date" class="form-control" id="add_startdate">
@@ -41,35 +36,56 @@
                       <input type="date" class="form-control" id="add_enddate">
                     </div>
                 </div></div>
-              </td>
-              <!-- <td style="width:33%; text-align:center">
-                <div align="center"><div class="thumbnail" style="padding:30px; width:60%;">
-                    <a href="ad.jpg">
-                      <img src="ad.jpg" alt="Lights" style=" height:300px">
-                    </a>
-                  </div></div>
-              </td> -->
-              <td style="width:33%; text-align:center">
-                  <div align="center"><div class="thumbnail" style="padding:30px; width:60%; height:350px  ">   
+                </div>
+              
+              
+                <div class="col-sm-6">
+                  <div align="center"><div class="thumbnail" style="padding:30px; width:100%; height:350px  ">   
+                    <div class="form-group">
+                        <label >優惠標題:</label>
+                        <input type="text" class="form-control" id="add_offer_title">
+                    </div>
                     <div>
-                        <textarea id="add_offer_text" placeholder="輸入更新文字" style="width:90%;height:200px" required></textarea>
+                        <label >優惠內容:</label>
+                        <textarea id="add_offer_text" class="form-control" placeholder="輸入更新文字" style="height:180px" required></textarea>
                     </div>      
                   </div></div>
-              </td>
-            </tr>
-            <tr>
-                <td ><button class="btn btn-primary add_offer" style="width:60%; margin-top:10px">確認</button></td>
-                <td><button class="btn btn-danger clo" style="width:60%; margin-top:10px" >close</button></td>
-            </tr>
-          </table><br><br>
+                </div>
+
+                <div class="col-sm-12">
+                    <div align="center"><div class="thumbnail" style="padding:30px; width:100%;  ">   
+                      <div class="form-group">
+                          <label >優惠程度:</label>
+                          <select class="form-control" id="add_offerlevel">
+                              <option value="1">50%或者更多</option>
+                              <option value="2">50% 到 70%</option>
+                              <option value="3">70% 到 90%</option>
+                          </select>
+
+                      </div>    
+                    </div></div>
+                  </div>
+            
+                <button class="btn btn-primary add_offer" style="width:60%; margin-top:10px">確認</button>
+          <br>
 
         </div>
         {{#each offer_info}}
         <div class="col-sm-4">
-              <h4>優惠時段</h4>
+              <h4>優惠時段&優惠程度</h4>
               <div align="center"><div class="thumbnail" style="padding:30px;  "> 
                   <div style=" height:300px">
                     開始時間:  {{offer_startdate}}  <br> 至 <br>結束時間:  {{offer_enddate}}
+                    <br><br><br>
+                    {{#if $eq offer_level_id is1}}
+                      優惠程度多於50%
+                    {{/if}}
+                    {{#if $eq offer_level_id is2}}
+                    優惠程度50%至70%
+                    {{/if}}
+                    {{#if $eq offer_level_id is3}}
+                    優惠程度70%至90%
+                    {{/if}}
                   </div>
                   <div class="caption">
                       <button class="btn btn-danger" style="width:100%; margin-top:10px" data-toggle="modal" data-target="#offer_date{{offer_id}}">更換</button>
@@ -90,7 +106,7 @@
         <div class="col-sm-4">
             <h4>優惠敘述</h4>
             <div align="center"><div class="thumbnail" style="padding:30px;  ">   
-                <div style=" height:300px">{{offer_text}}</div>
+                <div style=" height:300px">{{offer_title}}:<br><br>{{offer_text}}</div>
                 <div class="caption">
                     <button class="btn btn-danger" style="width:100%; margin-top:10px" data-toggle="modal" data-target="#offer_text{{offer_id}}">更換</button>
                 </div>
@@ -181,6 +197,15 @@
                   <input type="date" class="form-control" id="update_offer_enddate_content{{offer_id}}"><br>
                   <button type="button" class="btn btn-success update_offer_enddate" data-dismiss="modal">確認更改</button>
                 </div>
+                <div class="form-group">
+                    <label >優惠程度:</label>
+                    <select class="form-control" id="update_offer_level_content{{offer_id}}">
+                        <option value="1">50%或者更多</option>
+                        <option value="2">50% 到 70%</option>
+                        <option value="3">70% 到 90%</option>
+                    </select><br>
+                    <button type="button" class="btn btn-success update_offer_level" data-dismiss="modal">確認更改</button>
+                  </div>
               </div>
               <div class="modal-footer">
                 <!-- <button type="button" class="btn btn-success update_offer_time" data-dismiss="modal">確認更改</button> -->
@@ -234,11 +259,15 @@
                 <h5 class="modal-title"  style="color:black; float:left">優惠文字修改{{offer_id}}</h5>
               </div>
               <div class="modal-body">
-                
-                <textarea id="update_offer_text_content{{offer_id}}" placeholder="輸入更新文字" style="width:90%;height:200px" required></textarea>
+                <label >優惠標題:</label>
+                <input type="text" class="form-control" id="update_offer_title_content{{offer_id}}"><br>
+                <button type="button" class="btn btn-success update_offer_title" data-dismiss="modal">確認更改</button><br>
+                <label >優惠內容:</label>
+                <textarea id="update_offer_text_content{{offer_id}}" class="form-control" placeholder="輸入更新文字" style="height:200px" required></textarea><br>
+                <button type="button" class="btn btn-success update_offer_text" data-dismiss="modal">確認更改</button>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-success update_offer_text" data-dismiss="modal">確認更改</button>
+                <!-- <button type="button" class="btn btn-success update_offer_text" data-dismiss="modal">確認更改</button> -->
                 <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
               </div>
             </div>

@@ -13,7 +13,43 @@
 
       <div class="well" align="center"  >
       <br><br>
-      <input type="hidden" value="{{a}}" id="tsh_id">
+      <input type="hidden" value="{{par_id}}" id="tsh_id">
+      <h4><strong>
+          申請商家:{{tsh_info.tsh_name}},您好<br><br>
+          請確認您輸入的基本資料後,按下驗證按鈕並輸入密碼進行系統的驗證<br>
+        </strong></h4>
+          <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td>商家類別</td>
+                  <td>{{tsh_info.tsh_type}}</td>
+                </tr>
+                <tr>
+                  <td>信箱</td>
+                  <td>{{tsh_info.tsh_mail}}</td>
+                </tr>
+                <tr>
+                  <td>商家電話</td>
+                  <td>{{tsh_info.tsh_phone}}</td>
+                </tr>
+                <tr>
+                  <td>商家地址</td>
+                  <td>{{tsh_info.tsh_address}}</td>
+                </tr>
+                
+                <tr>
+                  <td>商家負責人</td>
+                  <td>{{tsh_info.tsh_admin}}</td>
+                </tr>
+                <tr>
+                  <td>負責人電話</td>
+                  <td>{{tsh_info.tsh_admin_phone}}</td>
+                </tr>
+              </tbody>
+            </table>
+      
+      
+      <br>
       <button type="button" class="btn btn-danger"  style="width:50%;" data-toggle="modal" data-target="#set">驗證</button>
        
         

@@ -11,7 +11,11 @@ Template.mypic.events({
     'click #deleteFileButton ': function (event) {
     console.log("deleteFile button ", this);
     FileCollection.remove({_id:this._id});
-},
+    },
+    'click .upload-class'(){
+        alert("圖片長寬比請上傳4:3或是16:9");
+
+    },
     'change .upload-class': function (event, template) {
         const mail = Meteor.user().emails[0].address;
         const myshop = Shop.findOne({sh_mail: mail});

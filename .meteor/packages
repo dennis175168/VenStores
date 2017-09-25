@@ -30,3 +30,4 @@ cfs:filesystem
 cfs:standard-packages
 cfs:gridfs
 raix:handlebar-helpers
+momentjs:moment

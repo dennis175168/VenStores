@@ -1,0 +1,114 @@
+<template name="prize" >
+    <div class="prize">
+    <div class="advertise">
+        {{>header_small}}
+                
+    <div class="container-fluid">
+        <div class="row content">
+        {{>header_large}}
+    
+        
+        
+        <br>
+        <div class="col-sm-9" >
+        <div class="well" align="center" style="padding:5px">
+                <h3  style="font-weight:bold;">積點兌換</h3><h4  style="font-weight:bold;">advertisement</h4>
+        </div>
+        <div class="well" align="center" style="height:500px" >
+            <div class="col-sm-3 thumbnail">
+                <img src="Nike.jpg" style="width:100%">
+                <div class="caption">
+                        <input type="button" id="choose_prize" class="btn btn-primary" value="選擇" style="width:100%; margin-top:10px" data-toggle="modal" data-target="#this_prize">
+                </div>
+            </div>
+            <div class="col-sm-3 thumbnail">
+                    <img src="Nike.jpg" style="width:100%">
+                    <div class="caption">
+                            <input type="button" id="choose_prize" class="btn btn-primary" value="選擇" style="width:100%; margin-top:10px">
+                    </div>
+                </div>
+            <div class="col-sm-3 thumbnail">
+                <img src="Nike.jpg" style="width:100%">
+                <div class="caption">
+                        <input type="button" id="choose_prize" class="btn btn-primary" value="選擇" style="width:100%; margin-top:10px">
+                </div>
+            </div>
+            <div class="col-sm-3 thumbnail">
+                <img src="Nike.jpg" style="width:100%">
+                <div class="caption">
+                        <input type="button" id="choose_prize" class="btn btn-primary" value="選擇" style="width:100%; margin-top:10px">
+                </div>
+            </div>
+
+
+
+            <!-- 隱藏區塊 -->
+            <div class="modal fade" id="this_prize" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" style="color:black">換取禮物</h4>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success exchange_prize" data-dismiss="modal">確認更換</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div id="main">
+                <div class="btn-group" style="padding:1%" >
+                    <button type="button" class="btn btn-primary scan_button" onclick="setwebcam()">QRcode 相機</button>
+                    <button type="button" class="btn btn-primary scan_button" onclick="setimg()">QRcode 圖片</button>
+                    <button type="button" class="btn btn-primary manual_button">手動輸入</button>
+                </div>
+        
+                <div id="mainbody" align="center">
+                    <div id="outdiv" width="100%"></div>
+    
+                    <div style="">
+                        <div id="result"></div>    
+                    </div>
+                    
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8418802408648518" data-ad-slot="2527990541" data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                    <div class="form-group">
+                        <label for="pwd">消費金額:</label>
+                        <input type="text" class="form-control" id="point_img" style="width:300px">
+                    </div>
+                    <button class="btn btn-success point_img_insert" >兌換點數</button>
+                </div>&nbsp;
+    
+                <div class="manual">
+                    <div class="form-group">
+                        <label for="pwd">會員信箱:</label>
+                        <input type="text" class="form-control" id="mail" style="width:300px">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">消費金額:</label>
+                        <input type="text" class="form-control" id="point_manual" style="width:300px">
+                    </div>
+                    <button class="btn btn-success point_manual_insert" >兌換點數</button>   
+                    
+                </div>
+            </div> -->
+        </div>
+    
+                
+    
+    
+    
+    
+    
+    
+        </div>
+        </div>
+    </div>
+    </div> 
+    </div>                  
+    </template>

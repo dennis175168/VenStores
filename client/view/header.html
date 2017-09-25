@@ -40,7 +40,11 @@
             </ul>
         <li><a href="announce"><span class="glyphicon glyphicon-envelope"></span> &nbsp;商圈公告</a></li>
         <li><a href="mypic"><span class="glyphicon glyphicon-picture"></span> &nbsp;圖片管理</a></li>
-        <li><a href="scanner"><span class="glyphicon glyphicon-picture"></span> &nbsp;兌換積點</a></li>
+        <li><a data-toggle="collapse" href="#collapse4"><span class="glyphicon glyphicon-qrcode"></span> &nbsp;兌換積點</a></li>
+            <ul id="collapse4" class="panel-collapse collapse nav nav-pills nav-stacked">
+            <li  style="margin:10px"><a href="scanner" style="text-decoration:none">&nbsp;&nbsp;&nbsp;換取點數</a></li>
+            <li  style="margin:10px"><a href="prize" style="text-decoration:none">&nbsp;&nbsp;&nbsp;換取獎品</a></li>
+            </ul>    
         <li><a href="login" id="logout"><span class="glyphicon glyphicon-log-out"></span> &nbsp;登出</a></li>
          {{else}}
         <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> &nbsp;&nbsp;登入</a></li>
@@ -91,7 +95,7 @@
                 <li  style="margin:10px"><a href="privacy#idpwd" style="text-decoration:none">&nbsp;&nbsp;&nbsp;帳號密碼更改</a></li>
                 </ul>
             <li><a href="announce"><span class="glyphicon glyphicon-envelope"></span> &nbsp;商圈公告</a></li>
-            <li><a href="scanner"><span class="glyphicon glyphicon-picture"></span> &nbsp;兌換積點</a></li>
+            <li><a href="scanner"><span class="glyphicon glyphicon-qrcode"></span> &nbsp;兌換積點</a></li>
             <li><a href="mypic"><span class="glyphicon glyphicon-picture"></span> &nbsp;圖片管理</a></li>
             <li><a href="login" id="logout"><span class="glyphicon glyphicon-log-out"></span> &nbsp;登出</a></li>
         {{else}}

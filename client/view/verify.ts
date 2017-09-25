@@ -4,17 +4,25 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Temp_Shop } from '../../lib/collections';
 import { Shop } from '../../lib/collections';
-
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 
 
 Template.verify.onCreated(function() {
    Meteor.call('load_tsh');
-    
+  //  var par_id = FlowRouter.getParam("sh_id");
+  //  console.log(par_id);
 });
 
 Template.verify.helpers({
-  
+ 
+  tsh_info(){
+    var par_id = FlowRouter.getParam("sh_id");
+    return Temp_Shop.findOne({tsh_id:par_id});
+  },
+  b(){
+    return "13";
+  }
 });
 
 Template.verify.events({

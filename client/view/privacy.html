@@ -21,7 +21,7 @@
 
            <!-- 名稱 -->
            <tr> 
-            <td style="width:50%; text-align:center; padding:10px ">
+            <td colspan="2" style="width:50%; text-align:center; padding:10px ">
               <strong>商家名稱</strong><br>
               <h5>您目前的名稱</h5>
             </td>
@@ -30,19 +30,19 @@
           </tr>
           
           <tr>
-            <td style="width:50%; text-align:center; padding:10px ">
+            <td colspan="2" style="width:50%; text-align:center; padding:10px ">
               <h5><span class="glyphicon glyphicon-ok"></span> {{info.sh_name}}</h5>
             </td>
-            <td  style="width:50%; text-align:center; padding:10px ">
+            <!-- <td  style="width:50%; text-align:center; padding:10px ">
               <button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change_name">更換</button>
-            </td>
+            </td> -->
           </tr>
 
           <tr><td colspan="2"><hr></td></tr>
 
           <!-- 信箱 -->
           <tr>
-            <td style="width:50%; text-align:center; padding:10px ">
+            <td colspan="2" style="width:50%; text-align:center; padding:10px ">
               <strong>信箱</strong><br>
               <h5>您目前的信箱</h5>
             </td>
@@ -51,12 +51,12 @@
           </tr>
           
           <tr>
-            <td style="width:50%; text-align:center; padding:10px ">
+            <td colspan="2" style="width:50%; text-align:center; padding:10px ">
               <h5><span class="glyphicon glyphicon-ok"></span> {{info.sh_mail}}</h5>
             </td>
-            <td  style="width:50%; text-align:center; padding:10px ">
+            <!-- <td  style="width:50%; text-align:center; padding:10px ">
               <button class="btn btn-danger" style="width:50%; margin-top:10px" data-toggle="modal" data-target="#change_mail">更換</button>
-            </td>
+            </td> -->
           </tr>
 
           <tr><td colspan="2"><hr></td></tr>
@@ -247,10 +247,16 @@
                         <h4 class="modal-title"  style="color:black">密碼修改</h4>
                       </div>
                       <div class="modal-body">
-                          <input type="text" class="form-control" id="usr">
+                        <label>原密碼</label>
+                          <input type="password" class="form-control" id="oldPassword">
+                        <label>新密碼</label>
+                          <input type="password" class="form-control" id="newPassword">
+                        <label>確認新密碼</label>
+                          <input type="password" class="form-control" id="newPassword2">
+                        <div style="display:none; color:brown">新密碼確認不符</div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-success update_address" data-dismiss="modal">確認更改</button>
+                        <button type="button" class="btn btn-success update_pwd" data-dismiss="modal">確認更改</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
                       </div>
                     </div>

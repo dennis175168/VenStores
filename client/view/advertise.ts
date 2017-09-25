@@ -28,6 +28,8 @@ Template.advertise.events({
     const offer_startdate = t.find('#add_startdate').value;
     const offer_enddate = t.find('#add_enddate').value;
     const add_offer_text = t.find('#add_offer_text').value;
+    const offer_title = t.find('#add_offer_title').value;
+    const offer_level = t.find('#add_offerlevel').value;
     const mail = Meteor.user().emails[0].address;
     const myshop = Shop.findOne({sh_mail: mail});
     const shop_id = myshop.sh_id;
@@ -41,14 +43,17 @@ Template.advertise.events({
       $(".new").css("display", "none");
      }else{
         console.log(offer_startdate+offer_enddate+add_offer_text+myshop.sh_id);
+        console.log(offer_level+offer_title);
         Offer.insert({
           sh_id:myshop.sh_id,
           offer_startdate:offer_startdate,
           offer_enddate:offer_enddate,
+          offer_title:offer_title,
           offer_text: add_offer_text,
+          offer_level_id: offer_level,
           offer_onsmartphone:'0',
         });
-        Meteor.call('Offerinsert', myshop.sh_id, add_offer_text, offer_startdate, offer_enddate);
+        Meteor.call('Offerinsert', myshop.sh_id, add_offer_text, offer_startdate, offer_enddate, offer_title, offer_level);
         $(".new").css("display", "none");
         alert("新增成功");
      }
@@ -67,6 +72,44 @@ Template.advertise.events({
     }else{
       Offer.update({_id: _id} ,{ $set: {offer_text : offer_text_content} });
       Meteor.call('UpdateAll', 'offer','offer_text',offer_text_content,offer_id,'offer_id');
+      // console.log(this);
+      // console.log(offer_text_content+ offer_id);
+    }
+    
+  },
+
+  //更新offer_title
+  'click .update_offer_title'(event,t){
+    event.preventDefault();
+    
+    const offer_id = this.offer_id;
+    const _id = this._id;
+    const offer_title_content = t.find('#update_offer_title_content'+offer_id).value;
+    if (offer_title_content == ""){
+      console.log("請打字");
+      alert("請輸入內容");
+    }else{
+      Offer.update({_id: _id} ,{ $set: {offer_title : offer_title_content} });
+      Meteor.call('UpdateAll', 'offer','offer_title',offer_title_content,offer_id,'offer_id');
+      // console.log(this);
+      // console.log(offer_text_content+ offer_id);
+    }
+    
+  },
+
+  //更新offer_level
+  'click .update_offer_level'(event,t){
+    event.preventDefault();
+    
+    const offer_id = this.offer_id;
+    const _id = this._id;
+    const offer_level_content = t.find('#update_offer_level_content'+offer_id).value;
+    if (offer_level_content == ""){
+      console.log("請打字");
+      alert("請輸入內容");
+    }else{
+      Offer.update({_id: _id} ,{ $set: {offer_level_id : offer_level_content} });
+      Meteor.call('UpdateAll', 'offer','offer_level_id',offer_level_content,offer_id,'offer_id');
       // console.log(this);
       // console.log(offer_text_content+ offer_id);
     }
@@ -203,5 +246,11 @@ Template.advertise.helpers({
     },
     is1(){
       return '1';
+    },
+    is2(){
+      return '2';
+    },
+    is3(){
+      return '3';
     },
   });

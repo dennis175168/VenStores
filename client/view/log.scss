@@ -1,4 +1,17 @@
 .login{
 @import 'header.scss';
+    .error{
+        display: none;
+        color: red;
+    }
+    .forgetpwd{
 
+    }
+
+    .forgetpwd:hover{
+        color: red;
+    }
+    .backlogin:hover{
+        color: red;
+    }
 }

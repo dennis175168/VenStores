@@ -17,37 +17,54 @@
 	<div class="well" align="center" >
         <div id="main">
             <div class="btn-group" style="padding:1%" >
-                <button type="button" class="btn btn-primary" onclick="setwebcam()">webcam</button>
-                <button type="button" class="btn btn-primary" onclick="setimg()">setimg</button>
-                <button type="button" class="btn btn-primary">手動輸入</button>
+                <button type="button" class="btn btn-primary scan_button" onclick="setwebcam()">QRcode 相機</button>
+                <button type="button" class="btn btn-primary scan_button" onclick="setimg()">QRcode 圖片</button>
+                <button type="button" class="btn btn-primary manual_button">手動輸入</button>
             </div>
+    
             <div id="mainbody" align="center">
                 
                 <!-- <td><img class="selector" id="webcamimg" src="https://webqr.com/vid.png" onclick="setwebcam()" align="left" /></td>
                                 <td><img class="selector" id="qrimg" src="https://webqr.com/cam.png" onclick="setimg()" align="right" /></td> -->
-                <div id="outdiv" width="100%"></div>
-
+                <div id="outdiv" width="100%" ></div>
                 <div style="">
-                    <div id="result">result</div>
-                    <div class="form-group">
-                        <label for="pwd">消費金額:</label>
-                        <input type="text" class="form-control" id="point">
-                    </div>
-                    <button class="btn btn-success point_insert" >兌換點數</button>
+                    <div id="result"></div>    
                 </div>
                 
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- webqr_2016 -->
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8418802408648518" data-ad-slot="2527990541" data-ad-format="auto"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- webqr_2016 -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8418802408648518" data-ad-slot="2527990541" data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <div class="form-group">
+                    <label for="pwd">消費金額:</label>
+                    <input type="text" class="form-control" id="point_img" style="width:300px">
+                </div>
+                <button class="btn btn-success point_img_insert" >兌換點數</button>
             </div>&nbsp;
+
+            <div class="manual">
+                <div class="form-group">
+                    <label for="pwd">會員信箱:</label>
+                    <input type="text" class="form-control" id="mail" style="width:300px">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">消費金額:</label>
+                    <input type="text" class="form-control" id="point_manual" style="width:300px">
+                </div>
+                <button class="btn btn-success point_manual_insert" >兌換點數</button>   
+                
+            </div>
+
+            
+
 
         </div>
     </div>
 
-            <canvas id="qr-canvas" width="800" height="600"></canvas>
+            
+    <canvas id="qr-canvas" width="800" height="600" style="display:none"></canvas>
             <script type="text/javascript">
                 load();
             </script>

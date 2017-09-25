@@ -25,7 +25,8 @@ Template.log.events({
           // could be incorrect. Inform the user that their
           // login attempt has failed. 
           console.log("ff");
-          alert("請輸入正確信箱與密碼");
+          $('.error').css('display','block');
+          //alert("請輸入正確信箱與密碼");
         }
           
         else{
@@ -36,4 +37,42 @@ Template.log.events({
       });
          return false; 
       },
+
+      'click #forget_btn'(e,t){
+        e.preventDefault();
+        const mail = t.find('#forget').value;
+        const username = t.find('#username').value;
+        const check = Meteor.users.findOne({username:username});
+        if(mail == ""){
+          alert("請填入信箱欄位");
+        }else{
+          if(check){
+            console.log("yes");
+            var options = {};
+            options.email = mail;
+            Accounts.forgotPassword(options, function(err){
+              if (err) {
+                console.log(err.reason);
+              } else {
+                Meteor.call('reset_pwd',username,mail);
+                alert('Great success!');
+              }
+            });
+          }else{
+            console.log("nonono");
+            alert("無此商家名稱!!");
+          }
+        }
+      },
+
+      'click .forgetpwd'(e,t){
+        $('.forgetpwd1').css('display','block');
+        $('.login1').css('display','none');
+      },
+
+      'click .backlogin'(e,t){
+        $('.login1').css('display','block');
+        $('.forgetpwd1').css('display','none');
+      }
+
 });

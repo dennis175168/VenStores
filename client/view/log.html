@@ -14,17 +14,33 @@
       <div class="well" align="center" style="height:500px">
           <form>
             <div style="width:40%; margin-top:100px">
-             <div class="input-group" >
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input id="email" type="text" class="form-control" name="email" placeholder="Email">
-            </div>
-            <br>
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-              <input id="password" type="password" class="form-control" name="password" placeholder="Password">
-            </div><br> 
-            <input type="button" class="btn btn-warning" value="忘記密碼" style="width:20%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="button" class="btn btn-primary" value="ENTER" style="width:20%" id="login-form">
+              <div class="login1">
+                  <div class="input-group" >
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+                  </div>
+                  <br>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                  </div><br> 
+                  <div class="error">請輸入正確信箱與密碼!!<br><br></div>
+                  <input type="button" class="btn btn-primary" value="ENTER" style="width:100%" id="login-form"><br><br>
+      
+                  <div class="forgetpwd">忘記密碼</div>
+              </div>
+              
+
+              <div style="display:none" class="forgetpwd1">
+                <div class="input-group" >
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="forget" type="text" class="form-control" name="email" placeholder="Email">
+                </div><br>
+                <input id="username" type="text" class="form-control" name="username" placeholder="請輸入您的店家名稱"><br>
+                <input type="button" class="btn btn-warning" value="忘記密碼" style="width:100%" id="forget_btn"><br><br>
+                <div class="backlogin">登入</div>
+              </div>
+
             </div>
           </form>
       </div>
