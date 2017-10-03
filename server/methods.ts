@@ -5,6 +5,8 @@ import { Offer } from '../lib/collections';
 import { Offer_Level } from '../lib/collections';
 import { Point } from '../lib/collections';
 import { Member } from '../lib/collections';
+import { Gift } from '../lib/collections';
+import { Gift_Box } from '../lib/collections';
 import { Shopping_Record } from '../lib/collections';
 import { Temp_Shop } from '../lib/collections';
 import { FileCollection } from '../lib/collections';
@@ -214,6 +216,66 @@ Meteor.methods({
         }
         });   
     },
+
+    'load_gift' (){
+        const sql ="select * from gift";
+        HTTP.post(url, { params: {sql} }, function(err, data){
+        Gift.remove({});
+        console.log(data);
+        const info = JSON.parse(data.content);
+        console.log( info[0].sh_name);
+        console.log(info.length);
+        for(var i=0; i<info.length; i++){
+                const gift_id = info[i].gift_id;
+                const sh_id = info[i].sh_id;
+                const gift_name = info[i].gift_name;
+                const gift_pic = info[i].gift_pic;
+                const gift_coin = info[i].gift_coin;
+                const gift_store = info[i].gift_store;
+                Gift.insert({
+                    gift_id : gift_id,
+                    sh_id: sh_id,
+                    gift_name : gift_name,
+                    gift_pic : gift_pic,
+                    gift_coin: gift_coin,
+                    gift_store : gift_store,
+                });
+        }
+        });   
+    },
+
+    'load_gift_box' (){
+        const sql ="select * from gift , gift_box where gift.gift_id = gift_box.gift_id";
+        HTTP.post(url, { params: {sql} }, function(err, data){
+        Gift_Box.remove({});
+        console.log(data);
+        const info = JSON.parse(data.content);
+        console.log( info[0].sh_name);
+        console.log(info.length);
+        for(var i=0; i<info.length; i++){
+                const gift_box_id = info[i].gift_box_id;
+                const gift_id = info[i].gift_id;
+                const mb_id = info[i].mb_id;
+                const sh_id = info[i].sh_id;
+                const gift_name = info[i].gift_name;
+                const gift_pic = info[i].gift_pic;
+                const gift_coin = info[i].gift_coin;
+                const gift_store = info[i].gift_store;
+                Gift_Box.insert({
+                    gift_box_id : gift_box_id,
+                    gift_id : gift_id,
+                    mb_id: mb_id,
+                    sh_id: sh_id,
+                    gift_name : gift_name,
+                    gift_pic : gift_pic,
+                    gift_coin: gift_coin,
+                    gift_store : gift_store,
+                });
+        }
+        });   
+    },
+
+
     
     'TempUserinsert'(name, phone, address, mail, admin, admin_phone, type){//
         const sql = "INSERT INTO temp_shop (tsh_name, tsh_mail, tsh_phone, tsh_address, tsh_admin, tsh_admin_phone, verify, tsh_type) VALUES ('"+name+"','"+mail+"','"+phone+"','"+address+"','"+admin+"','"+admin_phone+"','F','"+type+"')";
@@ -279,8 +341,18 @@ Meteor.methods({
         console.log("success");
     },
     'reset_pwd'(username,mail){
+        function RandomNumber(){
+            var array1 = new Array("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+        　　var Str = "";
+            for (var i=1; i<=10; i++){
+                var index = Math.floor(Math.random() * array1.length);
+                Str = Str +array1[index];
+            }
+        
+          　return Str;
+        }
         const _id = Meteor.users.findOne({username: username})._id;
-        const pwd = '123';
+        const pwd = RandomNumber();
         Accounts.setPassword(_id, pwd, true );
         console.log(mail);
         HTTP.post(mail_url, { params: {'mail':mail,'pwd':pwd} }, function(err,data){

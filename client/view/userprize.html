@@ -1,0 +1,38 @@
+<template name="userprize">
+    <div class="userprize">
+        <div class="advertise">
+            
+
+            <div class="container-fluid">
+                <div class="row content">
+
+                    <br>
+                    <div class="col-sm-12">
+                        <div class="well" align="center" style="padding:5px">
+                            <h3 style="font-weight:bold;">積點兌換</h3>
+                            <h4 style="font-weight:bold;">Point & Gift</h4>
+                            <button id="back" class="btn btn-primary">Back</button>
+                        </div>
+                        
+                            {{#each userprize}}
+                            <div class="col-sm-3">
+                            <div class="thumbnail " style="marggin:10px">
+                                <img src="{{gift_pic}}" alt="照片已不存在或損毀,請重新選擇" style="height:300px">
+                                <div class="caption">
+                                    <div>{{gift_name}}</div>
+                                    <input type="button" id="delete_gift" class="btn btn-danger" value="領取" style="width:100%; margin-top:10px">
+                                </div>
+                            </div>
+                            </div>
+                            {{/each}}
+                        </div>
+
+                        
+                    
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

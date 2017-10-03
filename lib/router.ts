@@ -104,3 +104,11 @@ FlowRouter.route('/alluser', {
         BlazeLayout.render('alluser');
     }
 });
+
+FlowRouter.route('/userprize/:mb_id', {
+    name:'userprize',
+    action: function(params) {
+        const mb_id = params.mb_id
+        BlazeLayout.render('userprize',{mb_id});
+    }
+});

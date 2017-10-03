@@ -1,4 +1,16 @@
 .prize{
     @import 'header.scss';
        
+    #imghelp{
+		font:18px arial,sans-serif;
+		background:#f0f0f0;
+		margin-left:35px;
+		margin-right:35px;
+		padding-top:10px;
+		padding-bottom:10px;
+		border-radius:20px;
+	}
+	.manual{
+		display: none;
+	}
     }

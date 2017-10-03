@@ -39,5 +39,6 @@ Template.header_small.events({
 		Meteor.logout(function(){ 
 		});
 	},
+	
 
 });

@@ -8,6 +8,8 @@ export const Temp_Shop = new Mongo.Collection('temp_shop');
 export const Point = new Mongo.Collection('point');
 export const Member = new Mongo.Collection('member');
 export const Shopping_Record = new Mongo.Collection('shopping_record');
+export const Gift = new Mongo.Collection('gift');
+export const Gift_Box = new Mongo.Collection('gift_box');
 export const Users = Meteor.users;
 Users.allow({
     insert: function (userId, doc) {
