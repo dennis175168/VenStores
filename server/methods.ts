@@ -7,10 +7,11 @@ import { Point } from '../lib/collections';
 import { Member } from '../lib/collections';
 import { Gift } from '../lib/collections';
 import { Gift_Box } from '../lib/collections';
+import { Board } from '../lib/collections';
 import { Shopping_Record } from '../lib/collections';
 import { Temp_Shop } from '../lib/collections';
 import { FileCollection } from '../lib/collections';
-import { Users} from '../../lib/collections';
+import { Users } from '../lib/collections';
 import { Accounts } from 'meteor/accounts-base';
 
 
@@ -40,6 +41,7 @@ Meteor.methods({
                     const offer_text = info[i].offer_text; 
                     const sh_admin = info[i].sh_admin; 
                     const sh_admin_phone = info[i].sh_admin_phone; 
+                    const sh_delete = info[i].sh_delete;
                     Shop.insert({
                     sh_id : sh_id,
                     sh_mail: sh_mail,
@@ -55,6 +57,7 @@ Meteor.methods({
                     offer_text :offer_text,
                     sh_admin :sh_admin,
                     sh_admin_phone :sh_admin_phone,
+                    sh_delete :sh_delete,
                     });
             }
             });
@@ -275,6 +278,33 @@ Meteor.methods({
         });   
     },
 
+    'load_board' (){
+        const sql ="select * from board ";
+        HTTP.post(url, { params: {sql} }, function(err, data){
+        Board.remove({});
+        console.log(data);
+        const info = JSON.parse(data.content);
+        console.log( info[0].sh_name);
+        console.log(info.length);
+        for(var i=0; i<info.length; i++){
+                const bd_id = info[i].bd_id;
+                const bd_title = info[i].bd_title;
+                const bd_content = info[i].bd_content;
+                const bd_editor = info[i].bd_editor;
+                const bd_doc = info[i].bd_doc;
+                const updated_at = info[i].updated_at;
+                Board.insert({
+                    bd_id : bd_id,
+                    bd_title : bd_title,
+                    bd_content: bd_content,
+                    bd_editor: bd_editor,
+                    bd_doc : bd_doc,
+                    updated_at : updated_at,
+                });
+        }
+        });   
+    },
+
 
     
     'TempUserinsert'(name, phone, address, mail, admin, admin_phone, type){//
@@ -316,9 +346,10 @@ Meteor.methods({
         const sql ="DELETE FROM "+table+" WHERE "+key_column+"="+id;
         HTTP.post(url, { params: {sql} }, function(err){});
     },
-    // 'removeusers'(user_id){
-    //     Users.remove({_id:user_id});
-    // },
+
+    'removeusers'(user_id){
+        Users.remove({_id:user_id});
+    },
     // 'createusers'(mail , pwd ,name){
     //     Accounts.createUser({email: mail, password : pwd, username: name}, function(err){
     //         if (err) {
@@ -358,6 +389,14 @@ Meteor.methods({
         HTTP.post(mail_url, { params: {'mail':mail,'pwd':pwd} }, function(err,data){
             console.log(data);
         });
+    },
+
+    'aa'(){
+        if (Accounts.findUserByEmail("456")) {
+            return true;
+        } else {
+        return false;
+        } 
     },
 
 })

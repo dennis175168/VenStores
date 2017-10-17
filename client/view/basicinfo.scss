@@ -1,5 +1,29 @@
 .basicinfo {
 @import 'header.scss';
 
-    
+    .phonepreview{
+        background-image: url("smartphone.png");
+        height: 800px;
+        background-repeat: no-repeat;
+        background-size : contain ;
+        background-position: center;
+        padding-top: 20%;
+        padding-bottom: 20%;
+        padding-left: 10%;
+        padding-right: 10%;
+        
+    }
+    .virtual_swichbar{
+        background-color: #2626FF;
+        color: white;
+        height: 25px;
+    }
+    .virtual_content1{
+        align: left;
+        display: block;
+    }
+    .virtual_content2{
+        align: left;
+        display: none;
+    }
 }

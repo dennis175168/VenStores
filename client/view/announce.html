@@ -19,6 +19,7 @@
         <div class="thumbnail" style="padding:30px">
           <table align="center" class="table table-hover">
                 <thead>
+                
                 <tr>
                     <th style="width:33%; text-align:center" >發布時間</th>
                     <th style="width:33%; text-align:center">標題主旨</th>
@@ -26,46 +27,45 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr  data-toggle="modal" data-target="#mailcontent">
-                    <td style="width:33%; text-align:center">2017/7/1</td>
-                    <td style="width:33%; text-align:center">系統更新</td>
-                    <td style="width:33%; text-align:center">威尼斯管理層</td>
+                {{#each board_info}}
+                <tr  data-toggle="modal" data-target="#mailcontent{{bd_id}}">
+                    <td style="width:33%; text-align:center">{{updated_at}}</td>
+                    <td style="width:33%; text-align:center">{{bd_title}}</td>
+                    <td style="width:33%; text-align:center">{{bd_editor}}</td>
                 </tr>
-                <tr>
-                    <td style="width:33%; text-align:center">2017/7/1</td>
-                    <td style="width:33%; text-align:center">系統更新</td>
-                    <td style="width:33%; text-align:center">威尼斯管理層</td>
-                </tr>
-                <tr>
-                    <td style="width:33%; text-align:center">2017/7/1</td>
-                    <td style="width:33%; text-align:center">系統更新</td>
-                    <td style="width:33%; text-align:center">威尼斯管理層</td>
-                </tr>
+                {{/each}}
                 </tbody>
             </table>
           </div>
 
             <!--隱藏區塊-->
-                    <div class="modal fade" id="mailcontent" role="dialog">
+            {{#each board_info}}
+                    <div class="modal fade" id="mailcontent{{bd_id}}" role="dialog">
                       <div class="modal-dialog modal-sl">
 
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h5 class="modal-title"  style="color:black; float:left">
-                              <div>發布時間:</div>
-                              <div>單位:</div>
-                              <div>主旨:</div>  
+                            <h5 class="modal-title"  style="color:black; ">
+                              <div align="left"><strong>發布時間:</strong> {{updated_at}}</div>
+                              <div align="left"><strong>單位:</strong> {{bd_editor}}</div>
+                              <div align="left"><strong>主旨:</strong> {{bd_title}}</div>  
                             </h5>
                           </div>
-                          <div class="modal-body">
-                            內容
+                          <div class="modal-body" align="left">
+                            <div style="width:80%">
+                              <div><strong>文件連結:</strong>{{bd_doc}}</div>
+                              <strong>內容:</strong>
+                              <div>{{bd_content}}</div>
+                            </div>
+                              
                           </div>
                           
                         </div>
                         
                       </div>
                     </div>
+            {{/each}}
       </div>
     {{else}}
       {{> permitsion}}

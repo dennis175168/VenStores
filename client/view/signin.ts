@@ -4,6 +4,9 @@ import { Meteor } from 'meteor/meteor';
 import { Temp_Shop } from '../../lib/collections';
 import { FileCollection } from '../../lib/collections';
 import { LogoCollection } from '../../lib/collections';
+import { Shop } from '../../lib/collections';
+import { Accounts } from 'meteor/accounts-base';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 Template.signin.onCreated(function() {
    
@@ -39,20 +42,32 @@ Template.signin.events({
         const sh_mail = t.find('#sh_mail').value;
         const sh_admin = t.find('#sh_admin').value;
         const sh_admin_phone = t.find('#sh_admin_phone').value;
-        if(sh_name == "" || sh_phone == "" || sh_address == "" || sh_mail == "" || sh_admin == "" || sh_admin_phone == ""){
-            alert("請輸入完整資訊");
+        
+        
+        //console.log(Accounts.findUserByEmail(sh_mail));
+        if(Shop.findOne({sh_mail:sh_mail}) == null){
+            if(sh_name == "" || sh_phone == "" || sh_address == "" || sh_mail == "" || sh_admin == "" || sh_admin_phone == ""){
+                alert("請輸入完整資訊");
+            }else{
+                $(".c2").css("display", "block");
+                $(".c1").css("display", "none");
+            }
+            document.getElementById("lab_sh_type").innerHTML=sh_type;
+            document.getElementById("lab_sh_name").innerHTML=sh_name;
+            document.getElementById("lab_sh_phone").innerHTML=sh_phone;
+            document.getElementById("lab_sh_address").innerHTML=sh_address;
+            document.getElementById("lab_sh_mail").innerHTML=sh_mail;
+            document.getElementById("lab_sh_admin").innerHTML=sh_admin;
+            document.getElementById("lab_sh_admin_phone").innerHTML=sh_admin_phone;
+            //console.log(document.getElementById("sh_type").value);
+        }else if(Shop.findOne({sh_mail:sh_mail}).sh_delete == 'T'){
+            document.getElementById("alert1").innerHTML='此商家已被商圈清除,請輸入被清除舊信箱及密碼登入,已確認清除,完成後信箱方可再進行註冊';
+            alert('按下確定跳轉至登入頁面,請輸入被清除舊信箱及密碼登入');
+            FlowRouter.go('log'); 
         }else{
-            $(".c2").css("display", "block");
-            $(".c1").css("display", "none");
+            alert("信箱已被使用過");
         }
-        document.getElementById("lab_sh_type").innerHTML=sh_type;
-        document.getElementById("lab_sh_name").innerHTML=sh_name;
-        document.getElementById("lab_sh_phone").innerHTML=sh_phone;
-        document.getElementById("lab_sh_address").innerHTML=sh_address;
-        document.getElementById("lab_sh_mail").innerHTML=sh_mail;
-        document.getElementById("lab_sh_admin").innerHTML=sh_admin;
-        document.getElementById("lab_sh_admin_phone").innerHTML=sh_admin_phone;
-        //console.log(document.getElementById("sh_type").value);
+       
     },
 
     'click .b11'(event) {

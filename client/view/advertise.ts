@@ -188,14 +188,33 @@ Template.advertise.events({
   //設為手機推播
   'click .update_offer_onsmartphone_1'(event,t){
     event.preventDefault();
-    // const mail = Meteor.user().emails[0].address;
-    // const myshop = Shop.findOne({sh_mail: mail});
-    // const shop_id = myshop.sh_id;
-    const offer_id = this.offer_id;
-    const _id = this._id;
-    // const others = Offer.find({sh_id:shop_id});
-    Offer.update({_id: _id} ,{ $set: {offer_onsmartphone : 1} });
-    Meteor.call('UpdateAll', 'offer','offer_onsmartphone',1, offer_id, 'offer_id');
+    const mail = Meteor.user().emails[0].address;
+    const myshop = Shop.findOne({sh_mail: mail});
+    const shop_id = myshop.sh_id;
+
+    
+    console.log(Offer.findOne({sh_id:shop_id,offer_onsmartphone:"1"}));
+    //if 目前有設定推波
+    if(Offer.findOne({sh_id:shop_id,offer_onsmartphone:"1"})!=null){
+      const old_offer = Offer.findOne({sh_id:shop_id,offer_onsmartphone:"1"});
+      Offer.update({_id: old_offer._id} ,{ $set: {offer_onsmartphone : 0} });
+      Meteor.call('UpdateAll', 'offer','offer_onsmartphone',0, old_offer.offer_id, 'offer_id');
+      //insert new offer
+      const offer_id = this.offer_id;
+      const _id = this._id;
+      const others = Offer.find({sh_id:shop_id});
+      Offer.update({_id: _id} ,{ $set: {offer_onsmartphone : 1} });
+      Meteor.call('UpdateAll', 'offer','offer_onsmartphone',1, offer_id, 'offer_id');
+      window.location.replace("advertise");
+    }else{
+      const offer_id = this.offer_id;
+      const _id = this._id;
+      const others = Offer.find({sh_id:shop_id});
+      Offer.update({_id: _id} ,{ $set: {offer_onsmartphone : 1} });
+      Meteor.call('UpdateAll', 'offer','offer_onsmartphone',1, offer_id, 'offer_id');
+      window.location.replace("advertise");
+    }
+    
 
     
     

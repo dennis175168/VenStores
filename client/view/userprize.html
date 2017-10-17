@@ -7,6 +7,7 @@
                 <div class="row content">
 
                     <br>
+                    {{#if currentUser}}
                     <div class="col-sm-12">
                         <div class="well" align="center" style="padding:5px">
                             <h3 style="font-weight:bold;">積點兌換</h3>
@@ -25,7 +26,10 @@
                             </div>
                             </div>
                             {{/each}}
-                        </div>
+                    </div>
+                    {{else}}
+                    {{> permitsion}}
+                    {{/if}}
 
                         
                     

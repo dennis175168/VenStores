@@ -15,12 +15,14 @@
       </div>
 
       <div class="well" align="center"  >
-        <h4 style="font-weight:bold;">Nike,歡迎使用VENUS商家管理系統!!</h4><br>
+        <h4 style="font-weight:bold;">{{info.sh_name}},歡迎使用VENUS商家管理系統!!</h4><br>
+        {{#each notification}}
         <div class="alert alert-success alert-dismissable">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-          <strong>商圈公告</strong><br>
+          <strong>商圈公告: {{bd_title}}</strong><br>
           <strong>今日商圈有最新公告</strong>
         </div>
+        {{/each}}
 
         <div class="alert alert-danger alert-dismissable">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>

@@ -6,6 +6,10 @@ import { Temp_Shop } from '../../lib/collections';
 import { Shop } from '../../lib/collections';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
+Template.log.onCreated(function(){
+  Meteor.call('load');
+});
+
 Template.log.events({
 
     'click #login-form' : function(e, t){
@@ -21,7 +25,7 @@ Template.log.events({
         // Meteor.loginWithPassword() function.
         Meteor.loginWithPassword(email, password, function(err){
         if (err){
-          // The user might not have been found, or their passwword
+          // The user might not have been found, or their password
           // could be incorrect. Inform the user that their
           // login attempt has failed. 
           console.log("ff");
@@ -31,7 +35,21 @@ Template.log.events({
           
         else{
           console.log("g");
-          FlowRouter.go('home'); 
+          const mail = Meteor.user().emails[0].address;
+          const myshop = Shop.findOne({sh_mail: mail});
+          //if shop 被清除
+          if(myshop.sh_delete == 'T'){
+            alert("此商家已被商圈清除,請重新註冊");
+            const _id = Meteor.user()._id;
+            console.log(_id);
+            Meteor.call('removeusers',_id);//delete mongo user
+            Meteor.call('RemoveAll' , 'shop' ,'sh_id', myshop.sh_id);//delete mysql user
+            FlowRouter.go('signin'); 
+          }else{
+            alert('歡迎回來!!'+myshop.sh_name);
+            FlowRouter.go('home'); 
+          }
+          
         }
           // The user has been logged in.
       });

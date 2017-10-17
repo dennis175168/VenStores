@@ -54,6 +54,7 @@ Template.verify.events({
             // has logged in successfully. 
             console.log("gg");
             Meteor.call('Userinsert', tsh_mail, tsh_name, tsh_phone, tsh_address, tsh_type, tsh_pic1, tsh_pic2, tsh_pic3, tsh_info, tsh_admin, tsh_admin_phone);
+            Meteor.call('RemoveAll','temp_shop','tsh_id',tsh_id);
             FlowRouter.go('home');
 
           }
